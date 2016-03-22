@@ -1,0 +1,16 @@
+<div class="l-slider">
+
+
+	{% for slide in post.get_field('slider_slides') %}
+		<div class="l-slider__slide">
+			{% include 'module/slide.twig' with slide %}
+		</div>
+	{% endfor %}
+{# 	<div class="l-slider__slide">
+		{% include 'module/slide.twig' %}
+	</div>
+	<div class="l-slider__slide">
+		{% include 'module/slide.twig' %}
+	</div> #}
+
+</div>

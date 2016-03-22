@@ -1,0 +1,26 @@
+<div class="l-masthead__nav--mobile show-on-all-phones js-mobile-nav">
+
+	<div class="l-masthead__nav--mobile-header">
+		<span class="burger-icon show-on-all-phones"></span>
+	</div>
+
+	<ul class="l-masthead__nav--mobile-primary-items">
+		{% for item in primaryNav.get_items %}
+			<li class="{{item.classes | join(' ')}}">
+				<a class="" href="{{item.get_link}}">
+					{{item.title}}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<ul class="l-masthead__nav--mobile-footer-items">
+		{% for item in footerNav.get_items %}
+			<li class="{{item.classes | join(' ')}}">
+				<a class="" href="{{item.get_link}}">
+					{{item.title}}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

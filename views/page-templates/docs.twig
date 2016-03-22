@@ -1,0 +1,69 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="l-site">
+
+		<div class="l-viewport l-hero l-hero--home l-hero--reducedh" id="hero-docs" style="background-image:url('{{site.theme.link}}/app/img/placeholder/docs-bg.jpg')">
+
+			<div class="l-hero__overlay">
+
+				{% if post.get_field('hero_title') %}
+					<div class="l-hero__title">{{post.get_field('hero_title')}}</div>
+					<div class="l-hero__subtitle">{{post.get_field('hero_subtitle')}}</div>
+				{% endif %}
+			</div>
+
+		</div>
+
+
+
+		<div class="l-page-section l-page-section--grey l-docs">
+			<div class="row">
+				<div class="columns eleven centered">
+
+
+						<ul class="l-docs__list">
+							<li>
+
+								<a href="{{options.docs_issue_log}}" target="_blank" class="b-icon-bubble">
+									<span class="b-icon-bubble__icon icon-bug"></span> Issue Log
+								</a>
+
+							</li>
+							<li>
+
+								<a href="{{options.docs_browser_matrix}}" target="_blank" class="b-icon-bubble">
+									<span class="b-icon-bubble__icon icon-chrome"></span>Browser Matrix
+								</a>
+
+							</li>
+							<li>
+
+								<a href="{{options.docs_checklist}}" target="_blank" class="b-icon-bubble">
+									<span class="b-icon-bubble__icon icon-clipboard"></span>Checklist
+								</a>
+
+							</li>
+							<li>
+
+								<a href="{{options.docs_dalek_test_results}}" target="_blank" class="b-icon-bubble">
+									<span class="b-icon-bubble__icon icon-magic-wand"></span>Dalek Results
+								</a>
+
+							</li>
+
+						</ul>
+
+						{# <iframe src="https://docs.google.com/spreadsheets/d/1g9PEPXIOoUhFwZ4zkdn6-NMGLYOk4qu5NQ9Cl_ooLdM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="1000" border="0"></iframe>
+ #}
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</div>
+{% endblock %}
+

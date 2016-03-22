@@ -1,0 +1,75 @@
+@include b(b-icon-ctas){
+	margin-top: 10px;
+
+	@include max-screen($screen-xs-max) {
+		margin-top: 0px;
+	}
+
+	@include e(container){
+		@include max-screen($screen-xs-max) {
+			margin: 30px 0;
+		}
+	}
+
+	@include e(icon){
+		height: 72px;
+		width: 72px;
+		display: block;
+		margin: 0 auto;
+		border: 5px solid $white;
+		border-radius: 100%;
+		background-position: center center;
+		background-size: cover;
+	}
+
+	@include e(title){
+		color: $white;
+		margin: 15px 0;
+
+		@include rem((
+			font-size: 28px,
+			line-height: 42px
+		));
+
+		@include max-screen($screen-xs-max) {
+			margin: 5px 0;
+		}
+	}
+
+	@include e(content){
+		color: $white;
+
+		@include rem((
+			font-size: 16px,
+			line-height: 26px
+		));
+
+		@include max-screen($screen-xs-max) {
+			text-align: left;
+		}
+	}
+
+	@include e(button){
+		margin-top: 50px;
+
+		@include max-screen($screen-xs-max) {
+			margin-top: 0;
+		}
+	}
+
+	&.b-icon-ctas--white {
+		.b-icon-ctas__icon {
+			border: 5px solid $brandPink;
+		}
+
+		.b-icon-ctas__title {
+			color: $body-font-color;
+		}
+
+		.b-icon-ctas__content {
+			color: $body-font-color;
+		}
+	}
+}
+
+

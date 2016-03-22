@@ -1,0 +1,95 @@
+{% if media_item.color == 'grey' %}
+	{% set color = 'grey' %}
+
+	{% else %}
+
+	{% set color = 'white' %}
+{% endif %}
+
+{% set thisPost = post.id %}
+{# 	{{thisPost}} #}
+
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' with {'background': color} %}
+{% endif %}
+
+<div class="l-page-section l-page-section--{{color}}">
+	<div class="b-sectors-grid b-sectors-grid--{{color}}">
+		<div class="container">
+			<div class="row">
+
+				{# only retrieve childs pages(no attachments) #}
+				{% set children = function('get_pages', 'child_of=' ~ thisPost)  %}
+
+				{% if children %}
+					{% for row in post.children|batch(3, 'No items') %}
+
+						{% set counter = 0 %}
+
+						{% for sector in row if sector.post_type == "page" %}
+
+						 	{% set counter = counter + 1 %}
+
+							<div class="b-sectors-grid__sector">
+						    	<div class="col-md-4">
+						    		<div class="b-sectors-grid__sector--content js-match-height">
+					        			{% if sector.sector_title %}
+					    					<h3><a href="{{sector.permalink}}">{{sector.sector_title}}</a></h3>
+					    				{% else %}
+					    				    <h3><a href="{{sector.permalink}}">{{sector.title}}</a></h3>
+					        			{% endif %}
+							    		<p>{{sector.sector_content}}</p>
+							    		<a href="{{sector.permalink}}">Learn More</a>
+							    	</div>
+						    	</div>
+						    </div>
+
+						    {% if counter is divisibleby(3) %}
+								</div>
+								<div class="row">
+						    {% endif %}
+
+						{% endfor %}
+
+					{% endfor %}
+
+				{% elseif post.parent.children %}
+
+
+					{# {% for sector in post.parent.children %} #}
+					{% for row in post.parent.children|batch(2, 'No items') %}
+
+						{% set counter = 0 %}
+
+						{% for sector in row if sector.id != thisPost  and sector.post_type == "page" %}
+
+						 	{% set counter = counter + 1 %}
+					   		{#  {% if sector.id != thisPost %} #}
+								<div class="b-sectors-grid__sector">
+							    	<div class="col-md-6">
+							    		<div class="b-sectors-grid__sector--content js-match-height">
+							    			{% if sector.sector_title %}
+												<h3><a href="{{sector.permalink}}">{{sector.sector_title}}</a></h3>
+											{% else %}
+											    <h3><a href="{{sector.permalink}}">{{sector.title}}</a></h3>
+							    			{% endif %}
+
+								    		<p>{{sector.sector_content}}</p>
+								    		<a href="{{sector.permalink}}">Learn More</a>
+								    	</div>
+							    	</div>
+							    </div>
+
+						    {% if counter is divisibleby(2) %}
+								</div>
+								<div class="row">
+						    {% endif %}
+
+					    {% endfor %}
+					    {# {% endif %} #}
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

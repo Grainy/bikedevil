@@ -1,0 +1,32 @@
+// ====== README ==========
+// Prioritise above-the-fold CSS and remove unnecessary, unused styles.
+// Only include styles that are required to display content within the first screen of content.
+// The contents of this file will automagically be inlined into the document head!
+
+@charset "UTF-8";
+
+//SETTINGS
+@import "var/settings";
+@import "var/mixins";
+@import "vendor/burger";
+@import "vendor/flexslider";
+
+//MIXINS
+@import "functions/all";
+@import "theme/placeholders";
+
+// MISSION CRITICAL
+@import "layout/masthead";
+@import "layout/cb-masthead";
+@import "layout/hero";
+@import "layout/footer";
+
+@import "theme/grid";
+
+// FONTS
+@import "theme/fonts";
+@import "theme/icons";
+
+//BASE
+@import "theme/base";
+@import "theme/typography";

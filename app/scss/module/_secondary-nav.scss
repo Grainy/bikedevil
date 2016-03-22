@@ -1,0 +1,121 @@
+@include b(b-secondary-nav){
+	position: relative;
+	padding-top: 10px;
+
+	&.slant {
+		padding-top: 1px;
+
+		&:before {
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: -70px;
+			height: 70px;
+			z-index: 1;
+			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='100,0 100,100 0,100' style='fill:white;' /%3E%3C/svg%3E");
+
+			@include max-screen($screen-xs-max) {
+				top: -40px;
+				height: 40px;
+			}
+		}
+	}
+
+	@include e(nav){
+		position: relative;
+		text-align: center;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-bottom: 10px;
+		display: inline-block;
+		border-bottom: 1px solid #DDDDDD;
+
+		@include m(slider){
+			width: 129px;
+			height: 1px;
+			background: $brandPink;
+			display: block;
+			position: absolute;
+			bottom: -1px;
+
+			html.touchevents &{
+				display: none;
+			}
+		}
+
+		@include m(link){
+			display: inline-block;
+
+			&.current_page_item {
+				a {
+					color: $brandPink;
+				}
+			}
+
+			a {
+				padding: 14px 30px;
+				font-family: 'zona_probold';
+				color: $body-font-color;
+				text-transform: uppercase;
+				text-decoration: none;
+
+				@include rem((
+					font-size: 12px,
+					line-height: 20px
+				));
+
+				&:hover {
+					color: $brandPink;
+				}
+
+				&:first-child, &:last-child {
+					padding: 14px 30px;
+				}
+			}
+		}
+	}
+}
+
+@include b(b-secondary-nav-mobile){
+	position: relative;
+	padding-top: 10px;
+
+	&.slant {
+		padding-top: 1px;
+
+		&:before {
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: -70px;
+			height: 70px;
+			z-index: 1;
+			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='100,0 100,100 0,100' style='fill:white;' /%3E%3C/svg%3E");
+
+			@include max-screen($screen-xs-max) {
+				top: -40px;
+				height: 40px;
+			}
+		}
+	}
+
+	.fancy-select {
+		.trigger {
+			border: none;
+			border-radius: 0;
+			border-bottom: 1px solid #ccc;
+
+			&:after {
+				right: 20px;
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% include 'layout/acf/hero.twig' with { 'postType': postType } %}
+
+	<div class="l-page-section l-archive l-page-section--has-slant">
+		<div class="container">
+			<div class="row text-center">
+				{{archive_intro_text}}
+			</div>
+			<div class="row l-archive__row">
+
+			</div>
+
+			<div class="loading">
+				<img src="{{site.theme.link}}/app/img/ui/ajax-loader.gif" alt="">
+			</div>
+
+			{% if function('wpmd_is_device') or (function('wpmd_is_ios') and function('wpmd_is_chrome_browser')) %}
+				<div class="text-center">
+					<a href="#" class="b-button b-button--tertiary js-load-more">Load More</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% include 'layout/acf/callback-cta.twig' %}
+
+	{% include 'footer.twig' %}
+{% endblock %}

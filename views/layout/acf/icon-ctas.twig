@@ -1,0 +1,45 @@
+{% if media_item.color == 'light' %}
+	{% set color = 'white' %}
+
+	{% else %}
+
+	{% set color = 'pink' %}
+{% endif %}
+
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' with {'background': color} %}
+{% endif %}
+
+<div class="l-page-section l-page-section--{{color}}">
+	<div class="b-icon-ctas b-icon-ctas--{{color}}">
+		<div class="container">
+			<div class="row">
+				{% for cta in media_item.calls_to_action %}
+				    {% if loop.length == 3 %}
+				    	{% set colWidth = 4 %}
+					{% elseif loop.length == 4 %}
+					    {% set colWidth = 3 %}
+				    {% endif %}
+
+				    <div class="col-sm-{{colWidth}} text-center b-icon-ctas__container">
+				    	<div class="b-icon-ctas__icon" style="background-image: url('{{cta.icon}}')"></div>
+
+				    	<h3 class="b-icon-ctas__title">{{cta.title}}</h3>
+
+				    	<div class="b-icon-ctas__content">
+				    		{{cta.content}}
+				    	</div>
+				    </div>
+				{% endfor %}
+			</div>
+
+			{% if media_item.has_button %}
+				<div class="row b-icon-ctas__button">
+					<div class="col-md-12 text-center">
+						<a href="{{media_item.button_link}}" class="b-button b-button--secondary">{{media_item.button_text}}</a>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

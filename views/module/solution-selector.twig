@@ -1,0 +1,18 @@
+<div class="b-solution-selector text-center">
+	<form action="#">
+		<select name="sector" id="sector" class="fancy-select">
+			<option value="null" disabled selected>What sector do you work in?</option>
+
+			{% for sector in options.sector_fields %}
+			    <option value="{{sector.slug}}">{{sector.sector}}</option>
+			{% endfor %}
+		</select>
+		<select name="role" id="role" class="fancy-select">
+			<option value="null" disabled selected>What's your role?</option>
+			{% for role in options.role_fields %}
+			    <option value="{{role.slug}}">{{role.role}}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+</div>

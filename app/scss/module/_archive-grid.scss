@@ -1,0 +1,72 @@
+@include b(l-archive) {
+	&:before {
+		top: -120px;
+	}
+
+	@include max-screen($screen-xs-max) {
+		&:before {
+			top: -40px;
+		}
+	}
+
+	@include e(post) {
+		margin: 15px 0;
+		display: none;
+
+		@include m(container) {
+			padding: 20px;
+			background: $brandGrey;
+		}
+
+		@include m(thumb) {
+			width: 100%;
+			margin-bottom: -8px;
+		}
+
+		@include m(title) {
+			margin: 0;
+			font-size: 24px;
+			line-height: 34px;
+
+			a {
+				text-decoration: none;
+				color: $brandPink;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		@include m(date) {
+			font-size: 12px;
+			line-height: 23px;
+		}
+
+		@include m(excerpt) {
+			font-size: 14px;
+			line-height: 28px;
+		}
+
+		@include m(link) {
+			margin: 0;
+			font-size: 12px;
+			line-height: 30px;
+			text-transform: uppercase;
+			font-family: 'zona_probold';
+			color: $brandPink;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.loading img {
+	    margin: 0 auto;
+	    display: block;
+	}
+}
+
+

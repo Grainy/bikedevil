@@ -1,0 +1,78 @@
+@include b(b-section-header){
+	text-align: center;
+
+	//ELEMS
+	@include e(title){
+		margin: 0;
+
+		@include rem((
+			font-size: 48px,
+			line-height: 76px
+		));
+
+		@include max-screen($screen-xs-max) {
+			font-size: 22px;
+			line-height: 36px;
+		}
+
+		&:after {
+			@include pseudo-icon($icon-one-dot, 12px);
+
+			@include max-screen($screen-xs-max) {
+				font-size: 8px;
+				line-height: 8px;
+			}
+		}
+
+		//MOD's
+		@include m(pink) {
+			&:after {
+				color: $brandPink;
+			}
+		}
+
+		@include m(white) {
+			color: $white;
+
+			&:after {
+				color: $white;
+			}
+		}
+
+		@include m(noAfter) {
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	@include e(content){
+		text-align: center;
+		display: inline-block;
+		padding:0 15px;
+
+		p {
+			font-family: 'zona_prosemibold';
+			margin-bottom: 0;
+
+			@include rem((
+				font-size: 22px,
+				line-height: 32px
+			));
+		}
+
+		//MQ's
+		@include min-screen($screen-sm) {
+			max-width: 60%;
+		}
+
+		//MOD's
+		@include m(white) {
+			color: $white;
+
+			&:after {
+				color: $white;
+			}
+		}
+	}
+}

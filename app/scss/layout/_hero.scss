@@ -1,0 +1,203 @@
+@include b(l-hero) {
+	z-index: 1;
+	position:relative;
+	height:80vh;
+	background-size:cover;
+	background-repeat:no-repeat;
+	overflow:hidden;
+	padding-top: 90px;
+
+	.flex-viewport {
+		height: 100%;
+		//overflow: visible!important;
+
+		.slides {
+			margin: 0;
+		}
+	}
+
+	@include e(slide) {
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		position:relative;
+	}
+
+	@include e(overlay) {
+		@extend %ab-center;
+		z-index:2001;
+	}
+
+	@include e(left-text) {
+		position: relative;
+		top: 100%;
+		transform: translate(0, -100%);
+		height: 626px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right bottom;
+		opacity: .75;
+	}
+
+	@include e(right-text) {
+		@include min-screen($screen-sm) {
+			position: relative;
+			top: 50%;
+			transform: translate(0%, -50%);
+		}
+
+		@include max-screen($screen-sm) {
+			position: relative;
+			top: 100%;
+			transform: translate(0%, -100%);
+		}
+
+		@include max-screen($screen-xs-max) {
+			position: absolute !important;
+			bottom: 0px;
+			height: 100%;
+			width: 100%;
+		}
+
+		h2 {
+			color: $white;
+			@include rem((
+				font-size: 70px,
+				line-height: 84px
+			));
+
+			@include max-screen($screen-xs-max) {
+				font-size: 26px;
+				line-height: 36px;
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+		}
+
+		strong {
+			font-family: 'zona_probold';
+
+			@include rem((
+				font-size: 70px,
+				line-height: 84px
+			));
+
+			@include max-screen($screen-xs-max) {
+				font-size: 26px;
+				line-height: 36px;
+			}
+		}
+	}
+
+	@include e(generic-text) {
+		@include min-screen($screen-sm) {
+			position: relative;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			float: left;
+			left: 50%;
+			width: 100%;
+		}
+
+		@include max-screen($screen-sm) {
+			position: relative;
+			top: 100%;
+			transform: translate(0%, -100%);
+		}
+
+		@include max-screen($screen-xs-max) {
+			position: absolute !important;;
+			width: 100%;
+			top: 50%;
+			transform: translate(0%, -50%);
+		}
+
+		h2 {
+			color: $white;
+			font-family: 'zona_probold';
+			margin: 0;
+			@include rem((
+				font-size: 70px,
+				line-height: 84px
+			));
+			@include max-screen($screen-xs-max) {
+				font-size: 26px;
+				line-height: 36px;
+			}
+
+
+			&.smaller {
+				font-family: 'zona_proregular';
+				@include rem((
+					font-size: 48px,
+					line-height: 66px
+				));
+
+				@include max-screen($screen-xs-max) {
+					font-size: 24px;
+					line-height: 36px;
+				}
+			}
+		}
+
+		h3 {
+			color: $white;
+			@include rem((
+				font-size: 22px,
+				line-height: 32px
+			));
+
+			@include max-screen($screen-xs-max) {
+				display: none;
+			}
+		}
+
+		.solution-toggle {
+			a {
+				margin: 18px 0;
+				max-width: 80%;
+			}
+		}
+
+		.b-solution-selector form {
+			background-color: transparent;
+			border: none;
+
+			.trigger {
+				background-color: $white !important;
+			}
+		}
+	}
+
+	@include e(bg) {
+		width:100%;
+		height:auto;
+		display: block;
+		max-width:100%;
+	}
+
+	// MOD's
+	@include m(has-overlay){
+
+		@include e(slide){
+			&:after{
+				content:'';
+				background-color: rgba(0,0,0,0.2);
+				position:absolute;
+				z-index:1;
+				top:0;
+				right:0;
+				bottom:0;
+				left:0;
+			}
+		}
+		@include e(generic-text){
+			z-index:2;
+		}
+
+	}
+}

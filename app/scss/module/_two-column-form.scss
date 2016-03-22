@@ -1,0 +1,96 @@
+@include b(b-two-column-form){
+	@include e(text){
+		h2 {
+			margin-top: 0;
+		}
+
+		@include max-screen($screen-md-min){
+			margin-top: 30px;
+		}
+	}
+
+	@include e(form){
+		background: $brandGrey;
+		border: 2px solid #ddd;
+		border-radius: 5px;
+		padding: 0 15px;
+		@include min-screen($screen-sm-min){
+			padding: 0 30px;
+		}
+
+
+		.gform_wrapper {
+			max-width:100%!important;
+			.gfield {
+				margin: 20px 0;
+			}
+
+			.top_label {
+				input, textarea {
+					padding: 10px;
+					width:100%!important;
+				}
+			}
+
+			input[type="text"], textarea{
+				border:1px solid #CCCCCC;
+			}
+
+			.datepicker {
+			    width: 100% !important;
+			}
+
+			.float-left {
+				float: left;
+				clear: left;
+				width: 47.5%;
+				margin-top: 0;
+			}
+
+			.float-right {
+				float: right;
+				clear: right;
+				width: 47.5%;
+				margin-top: 0;
+			}
+
+			.clear-multi {
+				margin-top: .375em;
+			}
+
+			.fancy-select {
+				margin-right: 7px;
+
+
+				label.gfield_label + div.ginput_container {
+					float: right;
+					width: 100%;
+				}
+
+				div.fancy-select {
+					width: 97.5%;
+				}
+
+				.trigger {
+					padding: 10px 40px 10px 20px;
+					background: $white;
+					line-height: 25px;
+					color: #7B7B7B;
+					font-weight: 100;
+				}
+
+				.options {
+					&.open {
+						top: 44px;
+						border-top-left-radius: 0;
+						border-top-right-radius: 0;
+					}
+				}
+			}
+
+			.gform_footer {
+				text-align: center;
+			}
+		}
+	}
+}

@@ -1,0 +1,71 @@
+{% extends "base.twig" %}
+{% block content %}
+
+
+			<div class="l-page-section l-contact-map l-page-section--flush">
+
+					<div class="l-contact-map__buttons">
+						<a href="#" class="b-button b-button--white">Support centre</a>
+						<a href="#" class="b-button b-button--green">Southern Office</a>
+					</div>
+					<div class="l-contact-map__map">
+						<img src="{{site.theme.link}}/app/img/placeholder/map-ashton.jpg" alt="">
+					</div>
+
+			</div>
+
+			<div class="l-page-section b-text">
+				<div class="container text-center">
+					<div class="row">
+						<h1>{{post.title}}</h1>
+					</div>
+					<div class="row">
+						<p>If you’d like to talk to a member of our team, please fill in the details below and someone will be in touch. </p>
+					</div>
+				</div>
+			</div>
+
+			<div class="l-page-section b-text">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+
+
+							{% filter shortcodes %}
+
+								[gravityform id="1" ajax="true" title="false"]
+
+							{% endfilter  %}
+						</div>
+						<div class="col-md-6">
+							SUPPORT CENTRE
+
+							{{options.contact_support_centre_address}}
+
+
+							Southern Office
+
+							{{options.contact_southern_office_address}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="l-page-section l-page-section--flush">
+					{% include 'layout/slider.twig' %}
+			</div>
+
+
+
+
+		{% if function('wp_is_mobile') %}
+		{% else %}
+		{% endif %}
+
+
+
+
+
+		{% include 'footer.twig' with {'pullup': '120'} %}
+
+{% endblock %}
+

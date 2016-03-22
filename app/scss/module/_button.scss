@@ -1,0 +1,59 @@
+/*
+A button suitable for giving stars to someone.
+
+:hover             - Subtle hover highlight.
+.stars-given       - A highlight indicating you've already given a star.
+.stars-given:hover - Subtle hover highlight on top of stars-given styling.
+.disabled          - Dims the button to indicate it cannot be used.
+
+Styleguide 2.1.3.
+*/
+
+@include b(b-button){
+	display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    color: $accent;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    border: 3px solid $accent;
+    border-radius: 40px;
+    font-family: 'zona_proregular';
+    transition: all .5s ease;
+
+    @include rem((
+    	font-size: 12px,
+    	line-height: 20px
+    ));
+
+    &:hover {
+    	background: $brandPink;
+    	color: $white;
+    }
+
+    @include max-screen($screen-xs-max) {
+    	width: 100%;
+    }
+
+	@include m(secondary){
+		color: $white;
+		border: 3px solid $white;
+
+		&:hover {
+			background: $white;
+			color: $brandPink;
+		}
+	}
+
+	@include m(tertiary){
+		background-color: $accent;
+		color: $white;
+		border: 3px solid $accent;
+
+		&:hover {
+			background: $white;
+			color: $brandPink;
+		}
+	}
+}

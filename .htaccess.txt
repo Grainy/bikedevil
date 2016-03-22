@@ -1,0 +1,21 @@
+# ----------------------------------------------------------------------
+# CUSTOM REWRITES
+# ----------------------------------------------------------------------
+# Image paths to inlined CSS
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond $1 \.(gif|jpe?g|png|svg)$ [NC]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule img/(.*)$ /wp-content/themes/cube3-wp-boiler/app/img/$1 [L]
+</IfModule>
+# font paths to inlined CSS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond $1 \.(eot|ttf|woff)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule fonts/(.*)$ /wp-content/themes/cube3-wp-boiler/app/fonts/$1 [L]
+</IfModule>

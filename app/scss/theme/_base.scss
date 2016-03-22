@@ -1,0 +1,191 @@
+/* Base Styles */
+
+html {
+	box-sizing: border-box;
+	@include rem-baseline; // Default zoom to 100%
+
+	@media (max-width: 400px) {
+		@include rem-baseline(75%);
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	background: $global-bg-color;
+	font-family: $font-family;
+	font-weight: $body-font-weight;
+	color: $body-font-color;
+	position: relative;
+	-webkit-font-smoothing: $font-smoothing;
+	-moz-osx-font-smoothing: grayscale;
+	margin:0;
+
+	@include rem((
+		font-size: 18px,
+		line-height: 28px
+	));
+
+	@include min-screen($screen-sm) {
+		-webkit-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+		width: 100%;
+		min-width: 0;
+	}
+
+	&.stuck{
+		padding-top:115px;
+	}
+
+	&.disabled {
+		overflow: hidden;
+	}
+}
+
+html, body {
+	height: 100%;
+}
+
+a {
+	color: $body-link-color;
+}
+
+a, img {
+    border:none;
+    outline:none
+}
+
+// remove iOS styling
+// textarea,
+// input[type="text"],
+input[type="button"],
+input[type="submit"] {
+     -webkit-appearance: none;
+     border-radius: 0;
+}
+
+.hide {
+	display: none;
+}
+
+.hide.active, .show {
+	display: block;
+}
+
+
+.ab-child{
+	position:relative;
+}
+
+
+.h-100 {
+	height: 100%;
+}
+
+// padding
+%pad-10{
+	padding:10px;
+}
+
+%pad-20{
+	padding:20px;
+}
+
+%pad-30{
+	padding:30px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.valign {
+	display: table;
+	width: 100%;
+}
+
+.valign > div, .valign > article, .valign > section, .valign > figure {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.media {
+	display: flex;
+	align-items: flex-start;
+}
+
+.media__figure {
+	margin-right: 1em;
+}
+
+.media__body {
+	flex: 1;
+}
+
+p{
+	margin-top: 0;
+}
+
+ul{
+	list-style-type:none;
+	padding-left: 0;
+
+	li{
+		&:first-child{
+			padding-left:0;
+			margin-left:0;
+			a{
+				padding-left:0;
+				margin-left:0;
+			}
+		}
+
+		&:last-child{
+			padding-right:0;
+			margin-right:0;
+			a{
+				padding-right:0;
+				margin-right:0;
+			}
+		}
+	}
+}
+
+ol {
+    counter-reset: item;
+    list-style-type: decimal;
+    padding: 0;
+
+    li {
+    	margin: 25px 0 25px 25px;
+    	position: relative;
+    	display: block;
+
+    	&:before {
+    		content: counter(item,decimal) '. ';
+		    counter-increment: item;
+		    display: block;
+		    text-align: right;
+		    font-family: 'zona_probold';
+		    font-weight: 600;
+		    padding-top: 5px;
+		    position: absolute;
+		    left: -25px;
+		    top: -5px;
+    		color: $brandPink;
+    	}
+    }
+}
+
+.no-bottom{
+	margin-bottom:0!important;
+}
+
+input[type=text], textarea{
+	@include placeholder {
+		@include placeholder-style;
+	}
+}

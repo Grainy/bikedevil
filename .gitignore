@@ -1,0 +1,19 @@
+# Application
+!build/.gitkeep
+
+# Vendor (e.g. Composer)
+vendor/*
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# Vagrant
+bin
+.vagrant
+
+# DS Store
+.DS_Store
+
+# Sass Cache
+.sass-cache/

@@ -1,0 +1,64 @@
+div.fancy-select {
+	position: relative;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #46565d;
+	&.disabled {
+		opacity: 0.5;
+	}
+	select:focus + div.trigger {
+		box-shadow: 0 0 0 2px #4b5468;
+		&.open {
+			box-shadow: none;
+		}
+	}
+	div.trigger {
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+		}
+
+		&.error{
+			border:2px solid #E42181;
+		}
+	}
+	ul.options {
+		list-style: none;
+		margin: 0;
+		position: absolute;
+		top: 40px;
+		left: 0;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 50;
+		max-height: 200px;
+		overflow: auto;
+		border-radius: 4px;
+		min-width: 200px;
+		transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+
+		&.open {
+			visibility: visible;
+			top: 50px;
+			opacity: 1;
+			transition: opacity 300ms ease-out, top 300ms ease-out;
+		}
+		&.overflowing {
+			top: auto;
+			bottom: 40px;
+			transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+			&.open {
+				top: auto;
+				bottom: 50px;
+				transition: opacity 300ms ease-out, bottom 300ms ease-out;
+			}
+		}
+		li {
+			cursor: pointer;
+			white-space: nowrap;
+			transition: all 150ms ease-out;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+
+module.exports = {
+
+	'Logo should link to home page': function(test) {
+		test
+			.open('http://revcareers.dev')
+			.assert.exists('.l-masthead__logo', 'Masthead Logo exists')
+			.click('.l-masthead__logo')
+			.assert.url.is('http://revcareers.dev', 'We are on the homepage')
+		    .done();
+	}
+};

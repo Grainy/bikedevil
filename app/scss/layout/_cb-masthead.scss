@@ -1,0 +1,38 @@
+@include b(l-cb-masthead){
+	width: 100%;
+	height: 90px;
+	background: $white;
+	border-bottom: 1px solid #dddddd;
+
+	a {
+		font-size: 12px;
+		line-height: 20px;
+		text-decoration: none;
+		color: $body-font-color;
+		text-transform: uppercase;
+		font-family: 'zona_probold';
+
+	}
+
+	@include e(back) {
+		@extend %rel-center-v;
+	}
+
+	@include e(logo) {
+		@extend %rel-center-v;
+
+		@include m(link) {
+			width: 171px;
+			height: 47px;
+			background: url("/app/themes/bike-devil/app/img/logo/logo.png") no-repeat;
+			@include image-2x("/app/themes/bike-devil/app/img/logo/logo@2x.png", contain);
+			display: inline-block;
+
+		}
+	}
+
+	@include e(phone) {
+		@extend %rel-center-v;
+	}
+}
+

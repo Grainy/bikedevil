@@ -1,0 +1,41 @@
+{% if function('is_front_page') %}
+
+	{{function('injectCSS', 'async-home')}}
+
+{# page builder template async CSS #}
+{% elseif post._wp_page_template == "template-page-builder.php"  %}
+
+	{{function('injectCSS', 'async-page-builder')}}
+
+{# contact template critical CSS #}
+{% elseif post._wp_page_template == "template-contact.php" %}
+
+	{{function('injectCSS', 'async-contact')}}
+
+
+{# docs template critical CSS #}
+{% elseif post._wp_page_template == "template-docs.php" %}
+
+	{{function('injectCSS', 'async-docs')}}
+
+
+{# 404 critical CSS #}
+{% elseif function('is_404') %}
+
+	{{function('injectCSS', 'async-404')}}
+
+
+{# single post critical CSS #}
+{% elseif function('is_singular') and post.post_type == "post" or post.post_type == "events" %}
+
+	{{function('injectCSS', 'async-single-post')}}
+
+{% elseif function('is_singular') %}
+
+	{{function('injectCSS', 'async-single-post')}}
+
+{% elseif function('is_archive') %}
+
+	{{function('injectCSS', 'async-archive')}}
+
+{% endif %}

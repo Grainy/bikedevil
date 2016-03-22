@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+{% block content %}
+
+
+	<div class="l-page-section l-page-section--flush">
+			{% include 'layout/hero.twig' %}
+	</div>
+
+	<div class="l-page-section l-page-section--has-slant">
+		<div class="container">
+			<div class="row">
+				<div class="b-decorated-header">
+					<h1>Title</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="l-page-section l-page-section--flush">
+			{% include 'layout/slider.twig' %}
+	</div>
+
+	{% include 'footer.twig' with {'pullup': '120'} %}
+
+{% endblock %}
+

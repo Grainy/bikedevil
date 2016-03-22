@@ -1,0 +1,20 @@
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' %}
+{% endif %}
+
+<div class="l-page-section">
+	<div class="b-two-column-form">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 b-two-column-form__form pull-right">
+					{% filter shortcodes %}
+						{{media_item.form_shortcode}}
+					{% endfilter  %}
+				</div>
+				<div class="col-sm-6 b-two-column-form__text">
+					{{media_item.text}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

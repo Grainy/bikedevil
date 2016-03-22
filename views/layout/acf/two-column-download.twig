@@ -1,0 +1,45 @@
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' %}
+{% endif %}
+
+{% if media_item.link_type == 'file' %}
+	{% set link = media_item.download_link.url %}
+		{% set target = 'target="_blank"' %}
+{% elseif media_item.link_type == 'internal' %}
+    {% set link = media_item.internal_link %}
+{% elseif media_item.link_type == 'external' %}
+    {% set link = media_item.external_link %}
+    	{% set target = 'target="_blank"' %}
+{% endif %}
+
+<div class="l-page-section">
+	<div class="b-two-column-download">
+		<div class="container">
+			<div class="row">
+				{% if media_item.content %}
+					<div class="{% if link %}col-md-8 {% else %} col-md-12{% endif %}">
+						{{media_item.content}}
+
+						{% if media_item.has_button %}
+							<a href="{{media_item.button_link}}" class="b-button">{{media_item.button_text}}</a>
+						{% endif %}
+					</div>
+				{% endif %}
+
+				{% if link %}
+					<div class="col-md-4 b-two-column-download__download" style="background-image: url({{media_item.background_image}});">
+						<h3 class="b-two-column-download__download--title">{{media_item.download_title}}</h3>
+
+						<div class="b-two-column-download__download--content">
+							{{media_item.download_content}}
+						</div>
+
+						<div class="b-two-column-download__download--button text-center">
+							<a href="{{link}}" class="b-button b-button--tertiary" {{target ? target : ''}}>{{media_item.download_text}}</a>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

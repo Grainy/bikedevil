@@ -1,0 +1,32 @@
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' with {'background': 'pink'} %}
+{% endif %}
+
+<div class="l-page-section l-page-section--pink">
+	<div class="b-module-grid">
+		<div class="container">
+			<div class="row">
+
+				{% for item in options.netsuite_modules %}
+				    <div class="b-module-grid__module {% if item.link == currentUrl %}active{% endif %}">
+				    	<div class="col-md-4">
+				    		<div class="b-module-grid__module--content js-match-height">
+				    			<h3>{{item.title}}</h3>
+				    			{{item.content}}
+
+				    			{% if item.link %}
+				    				<a href="{{item.link}}">Learn more</a>
+				    			{% endif %}
+				    		</div>
+				    	</div>
+
+						{% if loop.index is divisibleby(3) and not loop.last %}
+							</div>
+							<div class="row">
+						{% endif %}
+				    </div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

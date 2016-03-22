@@ -1,0 +1,17 @@
+@mixin placeholder {
+  &::-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
+@mixin placeholder-style {
+  	font-family: 'zona_probold';
+  	text-transform: uppercase;
+    font-size: 10px;
+    line-height: 25px;
+    color: #7B7B7B;
+    @include min-screen($screen-sm-min){
+ 		font-size: 12px;
+ 		//line-height: 25px;
+    }
+}

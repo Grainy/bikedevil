@@ -1,0 +1,29 @@
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' %}
+{% endif %}
+
+<div class="l-page-section l-page-section--p10">
+	<div class="b-two-column-image">
+		<div class="container">
+			<div class="row">
+				{% if media_item.image %}
+					<div class="col-md-6 col-sm-4 {% if media_item.image_alignment == 'right' %}pull-right{% endif %} no-p-mob b-two-column-image__image">
+						<img src="{{media_item.image.url}}" alt="{{media_item.image.alt}}">
+					</div>
+				{% endif %}
+
+				{% if media_item.content %}
+					<div class="col-md-6 col-sm-8">
+						{{media_item.content}}
+
+						{% if media_item.has_button %}
+							<a href="{{media_item.button_link}}" class="b-button">{{media_item.button_text}}</a>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+

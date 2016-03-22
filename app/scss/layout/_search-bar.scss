@@ -1,0 +1,10 @@
+@include b(l-search-bar){
+	@include e(title) {
+		color:#fff;
+		text-transform: uppercase;
+		@include rem(font-size, 40px);
+		letter-spacing:2pt;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}

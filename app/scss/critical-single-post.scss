@@ -1,0 +1,9 @@
+// ====== README ==========
+// Prioritise above-the-fold CSS and remove unnecessary, unused styles.
+// Only include styles that are required to display content within the first screen of content.
+// The contents of this file will automagically be inlined into the document head!
+
+@charset "UTF-8";
+
+//SETTINGS
+@import "critical";

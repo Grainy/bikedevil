@@ -1,0 +1,51 @@
+@include b(b-two-column-download){
+	@include e(download){
+		border: 2px solid $brandPink;
+		background-size: cover;
+		border-radius: 15px;
+		padding: 10px 30px;
+
+		@include max-screen($screen-xs-max) {
+			padding: 0 10px;
+		}
+
+		@include m(title){
+			text-align: center;
+			color: $white;
+			@include rem((
+				font-size: 24px,
+				line-height: 34px
+			));
+		}
+
+		@include m(content){
+			color: $white;
+			@include rem((
+				font-size: 14px,
+				line-height: 28px
+			));
+
+			@include max-screen($screen-xs-max) {
+				font-size: 12px;
+				line-height: 24px;
+			}
+		}
+
+		@include m(button){
+			margin: 30px 0;
+
+			@include rem((
+				font-size: 12px,
+				line-height: 20px
+			));
+
+			@include max-screen($screen-xs-max) {
+				a {
+					width: 95%;
+					font-size: 12px;
+					line-height: 20px;
+				}
+			}
+		}
+	}
+}

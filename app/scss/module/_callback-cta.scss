@@ -1,0 +1,28 @@
+@include b(b-callback-cta){
+	h2, p {
+		color: $white;
+	}
+
+	h2 {
+		margin: 20px 0;
+
+		@include max-screen($screen-xs-max) {
+			font-size: 24px;
+		}
+	}
+
+	a {
+		margin-top: 40px;
+		min-width: 200px;
+	}
+
+	@include max-screen($screen-xs-max) {
+		font-size: 18px;
+		line-height: 29px;
+
+		a {
+			margin-top: 10px;
+			max-width:80%;
+		}
+	}
+}

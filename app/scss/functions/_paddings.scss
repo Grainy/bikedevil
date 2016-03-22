@@ -1,0 +1,54 @@
+@mixin pt {
+  @for $i from 1 through 20 {
+    .pt-#{$i * 10} {
+      padding-top: $i * 10px;
+    }
+  }
+ 
+}
+@include pt;
+
+
+@mixin pr {
+  @for $i from 1 through 20 {
+    .pr-#{$i * 10} {
+      padding-right: $i * 10px;
+    }
+  }
+ 
+}
+@include pr;
+
+
+@mixin pb {
+  @for $i from 1 through 57 {
+    .pb-#{$i * 10} {
+      padding-bottom: $i * 10px;
+    }
+  }
+ 
+}
+@include pb;
+
+
+@mixin pl {
+  @for $i from 1 through 20 {
+    .pl-#{$i * 10} {
+      padding-left: $i * 10px;
+    }
+  }
+ 
+}
+@include pl;
+
+
+//global padding
+@mixin pg {
+  @for $i from 1 through 20 {
+    .pg-#{$i * 10} {
+      padding: $i * 10px;
+    }
+  }
+ 
+}
+@include pg;

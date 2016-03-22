@@ -1,0 +1,29 @@
+{% if media_item.header_title %}
+	{% include 'layout/acf/section-header.twig' with {'background': 'grey'} %}
+{% endif %}
+
+<div class="l-page-section l-page-section--grey">
+	<div class="container solution-toggle show-on-all-phones">
+		<div class="row">
+			<div class="col-md-12">
+				<a href="#" class="b-button b-button--tertiary js-solution-toggle">Tell us about your role</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container dont-show-me-on-phones js-solution-container">
+		<div class="row">
+			<div class="col-md-12 no-p-mob">
+				{% include 'module/solution-selector.twig' %}
+			</div>
+		</div>
+	</div>
+
+	<div class="container b-solution-selector__link">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<a href="{{site.link}}/sectors">View All Sectors</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+/* Fonts */
+@font-face {
+    font-family: 'zona_probold';
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.eot');
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.woff2') format('woff2'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.woff') format('woff'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.ttf') format('truetype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-bold-webfont.svg#zona_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zona_prosemibold';
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-semibold-webfont.eot');
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-semibold-webfont.woff') format('woff'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-semibold-webfont.ttf') format('truetype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-semibold-webfont.svg#zona_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zona_prolight';
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.eot');
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.woff2') format('woff2'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.woff') format('woff'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.ttf') format('truetype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-light-webfont.svg#zona_prolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zona_proregular';
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.eot');
+    src: url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.woff2') format('woff2'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.woff') format('woff'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.ttf') format('truetype'),
+         url('/app/themes/bike-devil/app/fonts/zona/intelligent_design_-_zonapro-regular-webfont.svg#zona_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'highcloud';
+    src:    url('#{$icomoon-font-path}/highcloud.eot');
+    src:    url('#{$icomoon-font-path}/highcloud.eot#iefix') format('embedded-opentype'),
+        url('#{$icomoon-font-path}/highcloud.ttf') format('truetype'),
+        url('#{$icomoon-font-path}/highcloud.woff') format('woff'),
+        url('#{$icomoon-font-path}/highcloud.svg#highcloud') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

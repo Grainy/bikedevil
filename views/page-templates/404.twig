@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="container top-container" style="padding-top: 90px;">
+		<div class="row top-row">
+			<h1>404 Not Found!</h1>
+			<p>Sorry, this page doesn't exist.</p>
+			<a href="/">Take me home</a>
+		</div>
+	</div>
+
+{% include 'footer.twig' with {'pullup': '120'} %}
+
+{% endblock %}

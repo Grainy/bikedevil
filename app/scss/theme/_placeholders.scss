@@ -1,0 +1,226 @@
+%clearfix{
+	@include clearfix();
+}
+
+%no-bottom{
+	margin-bottom:0;
+}
+
+%fixed {
+	position: fixed;
+	width:100%;
+
+	&.pinned {
+		position: absolute;
+	}
+
+	@include screen($screen-sm, $screen-tablet) {
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+	}
+}
+
+%unfixed {
+	position: relative !important;
+	top: auto !important;
+	left: auto !important;
+}
+
+%text-center {
+	text-align: center;
+}
+
+%text-left {
+	text-align: left;
+}
+
+%text-right {
+	text-align: right;
+}
+
+%pull-left {
+	float: left !important;
+}
+
+%pull-right {
+	float: right !important;
+}
+
+%db{
+	display:block;
+}
+
+%d--ib{
+	display:inline-block;
+}
+
+%fl{
+	float:left;
+}
+
+%fr{
+	float:right;
+}
+
+%pos--r{
+	position:relative;
+}
+
+%pos--a{
+	position:absolute;
+}
+
+%vcenter{
+	&:before {
+		content: " ";
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	&:first-child {
+		display:inline-block;
+		vertical-align:middle;
+	}
+}
+
+%no-p-mob{
+	@include max-screen($screen-xs-max) {
+		padding-bottom: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+		padding-top: 0px;
+	}
+}
+
+
+//MQ visibility
+%dont-show-me-on-phones{
+	@media (max-width: 793px) {
+		display: none;
+	}
+}
+
+%show-on-all-phones{
+	display: none;
+
+	@media (max-width: 793px) {
+		display: block !important;
+	}
+}
+
+
+%dont-show-me-on-tabs{
+	@include max-screen($screen-sm-max) {
+		display: none;
+	}
+}
+
+%show-on-all-tabs{
+	display: none;
+	@include max-screen($screen-sm-max) {
+		display: block !important;
+	}
+}
+
+
+
+%centered-div-uw{
+	left:50%;
+}
+
+%centered-div-uh{
+	top:50%;
+}
+
+%inline-list{
+	li{
+		display: inline-block;
+	}
+}
+
+%w--100w {
+	width: 100vw;
+}
+
+%h--100h {
+	height: 100vh;
+}
+
+%h--100p {
+	height: 100%;
+}
+
+%w--100p {
+	width: 100%;
+}
+
+%d--t {
+	display: table;
+}
+
+%d--tr {
+	display: table-row;
+}
+
+
+%d--tc {
+	display: table-cell;
+}
+
+%div-center{
+	margin:0 auto;
+}
+
+%wsnw{
+	white-space: nowrap;
+}
+
+%bg-cc {
+	background-position: center center;
+}
+
+%ab-center{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+%ab-center-v{
+	position: absolute;
+	top: 50%;
+	transform: translate(0%, -50%);
+}
+
+%ab-center-w{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+%rel-center{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+%rel-center-v{
+	position: relative;
+	top: 50%;
+	transform: translate(0%, -50%);
+}
+
+%rel-center-w{
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+%rel-bottom{
+	position: relative;
+	top: 100%;
+	transform: translate(0, -100%);
+}

@@ -1,0 +1,63 @@
+<footer>
+	<div class="l-page-section l-page-section--greydark l-footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 text-right l-footer-top__logo">
+					<img src="{{options.top_footer_logo.url}}" alt="">
+				</div>
+				<div class="col-sm-6 l-footer-top__content dont-show-me-on-phones">
+					{{options.top_footer_content}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="l-page-section l-page-section--black l-footer-bottom">
+		<div class="container h-100">
+			<div class="row h-100">
+				<div class="col-md-3 col-sm-4 dont-show-me-on-phones">
+					<a class="l-footer-bottom__highcloud" href="{{site.link}}" title="{{site.name}}" rel="home"></a>
+					<a class="l-footer-bottom__mhance" href="http://www.m-hance.com" title="Visit m-hance site" rel="mhance" target="_blank"></a>
+				</div>
+
+				<div class="col-md-6 col-sm-8 dont-show-me-on-phones">
+					<div class="l-footer-bottom__nav text-center">
+						<ul>
+							<li >&copy; {{ 'now'|date('Y') }}</li>
+							{% for item in footerNav.get_items %}
+								<li class="{{item.classes | join(' ')}}">
+									<a href="{{item.get_link}}">{{item.title}}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+
+				<div class="l-footer-bottom__social">
+					<div class="col-md-3 col-sm-12 text-right">
+						<ul>
+							{% if options.google_plus %}
+								<li><a href="{{options.google_plus}}"><span class="icon-googleplus"></span></a></li>
+							{% endif %}
+
+							{% if options.youtube %}
+								<li><a href="{{options.youtube}}"><span class="icon-youtube"></span></a></li>
+							{% endif %}
+
+							{% if options.rss_feed %}
+								<li><a href="{{options.rss_feed}}"><span class="icon-rss"></span></a></li>
+							{% endif %}
+
+							{% if options.twitter %}
+								<li><a href="{{options.twitter}}"><span class="icon-twitter"></span></a></li>
+							{% endif %}
+
+							{% if options.linkedin %}
+								<li><a href="{{options.linkedin}}"><span class="icon-linkedin"></span></a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

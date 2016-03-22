@@ -1,0 +1,149 @@
+footer {
+	.l-page-section {
+		padding: 50px 0;
+
+		@include max-screen($screen-xs-max) {
+			padding: 15px 0;
+		}
+	}
+}
+
+@include b(l-footer-top){
+	@include e(logo){
+		padding-right: 35px !important;
+
+		@include max-screen($screen-xs-max) {
+			padding: 0 !important;
+			margin-top: 5px;
+			margin-left: 25%;
+		}
+	}
+
+	@include e(content){
+		p {
+			margin-bottom: 0;
+			color: $white;
+
+			@include rem((
+				font-size: 14px,
+				line-height: 26px
+			));
+		}
+	}
+}
+
+@include b(l-footer-bottom){
+	@include e(highcloud) {
+		position: relative;
+		float: left;
+		width: 124px;
+		height: 34px;
+		background: url("/app/themes/bike-devil/app/img/logo/logo-footer.png") no-repeat;
+		@include image-2x("/app/themes/bike-devil/app/img/logo/logo-footer@2x.png", contain);
+		margin-right: 32px;
+
+		@include screen($screen-sm, $screen-tablet) {
+			max-width: 45%;
+			margin-right: 20px;
+			top: 3px;
+		}
+	}
+	@include e(mhance) {
+		position: relative;
+		float: left;
+		width: 98px;
+		height: 35px;
+		background: url("/app/themes/bike-devil/app/img/logo/mhance.png") no-repeat;
+		@include image-2x("/app/themes/bike-devil/app/img/logo/mhance@2x.png", contain);
+
+		@include screen($screen-sm, $screen-tablet) {
+			max-width: 45%;
+		}
+	}
+
+	@include e(nav){
+		@extend %inline-list;
+
+		ul{
+			margin: 0;
+		}
+
+		li, a {
+			text-decoration: none;
+			text-transform: uppercase;
+			font-family: 'zona_probold';
+			color:#9B9B9B;
+
+			@include rem((
+				font-size: 12px,
+				line-height: 20px
+			));
+		}
+
+		li {
+			&:after {
+				content: "|";
+				padding:0 10px;
+
+				@include screen($screen-sm, $screen-tablet) {
+					padding:0 5px;
+				}
+			}
+
+			&:last-child {
+				&:after {
+					display: none;
+				}
+			}
+
+			a {
+				transition: all .5s ease;
+
+				&:hover {
+					color: $white;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	@include e(social){
+		@extend %inline-list;
+		position: relative;
+		top: 3px;
+
+		@include max-screen($screen-xs-max) {
+			margin-top: 0;
+			text-align: center;
+		}
+
+		@include screen($screen-sm, $screen-sm) {
+			margin-top: 50px;
+			text-align: center;
+		}
+
+		ul{
+			margin: 0;
+		}
+
+		li, a {
+			text-decoration: none;
+			color:#9B9B9B;
+		}
+
+		li {
+			padding-right: 22px;
+
+			@include screen($screen-sm, $screen-tablet) {
+				padding-right: 10px;
+			}
+
+			a {
+				transition: color .5s ease;
+				&:hover {
+					color: $white;
+				}
+			}
+		}
+	}
+}

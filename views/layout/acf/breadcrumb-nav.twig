@@ -1,0 +1,15 @@
+{% if hero or slant %}
+	{% set slant = 'slant' %}
+{% endif %}
+
+<div class="b-breadcrumbs {{slant}}" {% if padding %}style="padding-top: {{padding}}"{% endif %}>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{% if function('function_exists', 'breadcrumb_trail') %}
+				    {{function('breadcrumb_trail', args)}}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

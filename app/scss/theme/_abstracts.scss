@@ -1,0 +1,155 @@
+.text-center { @extend %text-center; }
+.text-left { @extend %text-left; }
+.text-right { @extend %text-right; }
+
+.pull-left { @extend %pull-left; }
+
+.pull-right {
+
+		@include min-screen($screen-sm-min){
+			float: right;
+		}
+}
+
+.no-bottom{
+  @extend %no-bottom;
+}
+
+.fixed {
+   @extend %fixed;
+}
+
+.unfixed {
+   @extend %unfixed;
+}
+
+
+.db{
+   @extend %db;
+}
+.d--ib{
+   @extend %d--ib;
+}
+
+.fl{
+  @extend %fl;
+}
+.fr{
+  @extend %fr;
+}
+
+.pos--r{
+   @extend %pos--r;
+}
+.pos--a{
+    @extend %pos--a;
+}
+
+.vcenter{
+     @extend %vcenter;
+}
+
+
+.show-on-all-phones{
+    @extend %show-on-all-phones;
+}
+.dont-show-me-on-phones{
+     @extend %dont-show-me-on-phones;
+}
+
+
+.show-on-all-tabs{
+    @extend %show-on-all-tabs;
+}
+.dont-show-me-on-tabs, .hide-on-tablets{
+     @extend %dont-show-me-on-tabs;
+}
+
+
+// .hide-on-tablets{
+//     @extend %hide-on-tablets;
+// }
+
+
+.no-p-mob{
+     @extend %no-p-mob;
+}
+
+
+
+
+
+.centered-div-uw{
+   @extend %centered-div-uw;
+}
+
+.centered-div-uh{
+   @extend %centered-div-uh;
+}
+
+.w--100w {
+   @extend %w--100w;
+}
+.h--100h {
+   @extend %h--100h;
+}
+
+.h--100p {
+   @extend %h--100p;
+}
+.w--100p {
+   @extend %w--100p;
+}
+
+.dt {
+   @extend %d--t;
+}
+
+.dtr {
+   @extend %d--tr;
+}
+
+
+.dtc {
+   @extend %d--tc;
+}
+
+
+.div-center{
+  @extend %div-center;
+}
+
+.wsnw{
+  @extend %wsnw;
+}
+
+//clearing
+
+.cl{
+  clear:left;
+}
+
+.pushl-50{
+  position:relative;
+  left:50%;
+}
+
+.pushr-50{
+  position:relative;
+  right:50%;
+}
+
+.bg-cc {
+   @extend %bg-cc;
+}
+
+.slick-list, .slick-track {
+     width: 100%;
+  height: 100%;
+}
+
+.ab-center{
+  	 @extend %ab-center;
+}
+
+

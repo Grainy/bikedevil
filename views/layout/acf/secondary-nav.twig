@@ -1,0 +1,57 @@
+{% if hero or slant %}
+	{% set slant = 'l-page-section--has-slant' %}
+{% endif %}
+
+<div class="l-page-section text-center {{slant}} no-margin" {% if padding %}{# style="padding-top: {{padding}}" #}{% endif %}>
+	<div class="b-secondary-nav dont-show-me-on-phones">
+		<ul class="b-secondary-nav__nav">
+			{% if archive %}
+					<li class="b-secondary-nav__nav--link">
+						<a href="#" data-cat="all">All</a>
+					</li>
+				{% for category in categories | sortbyfield('order_value')  %}
+					<li class="b-secondary-nav__nav--link">
+						<a href="#" data-cat="{{category.slug}}">{{category.title}}</a>
+					</li>
+				{% endfor %}
+
+			{% else %}
+
+				{% for item in netsuiteNav.get_items %}
+					<li class="b-secondary-nav__nav--link {{item.classes | join(' ')}}">
+						<a href="{{item.get_link}}">{{item.title}}</a>
+					</li>
+				{% endfor %}
+
+			{% endif %}
+
+			<div class="b-secondary-nav__nav--slider"></div>
+		</ul>
+	</div>
+
+	<div class="b-secondary-nav-mobile {{slant}} show-on-all-phones">
+
+		{% if archive %}
+			<select name="secondary-nav" id="secondary-nav" class="fancy-select js-archive-filter">
+				<option value="all">All</option>
+
+				{% for category in categories | sortbyfield('order_value')  %}
+					<option value="{{category.slug}}">{{category.title}}</option>
+				{% endfor %}
+			</select>
+		{% else %}
+			<select name="secondary-nav" id="secondary-nav" class="fancy-select">
+				{% for item in netsuiteNav.get_items %}
+					{% if item.get_link == currentUrl %}
+						<option value="{{item.get_link}}">{{item.title}}</option>
+					{% endif %}
+				{% endfor %}
+				{% for item in netsuiteNav.get_items %}
+					{% if item.get_link != currentUrl %}
+						<option value="{{item.get_link}}">{{item.title}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		{% endif %}
+	</div>
+</div>

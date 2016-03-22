@@ -1,0 +1,81 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% set hero = false %}
+
+	{% for media_item in post.get_field('fc_page_sections') %}
+		{% if loop.first %}
+			{% set padding = '120px' %}
+
+			{% else %}
+
+			{% set padding = '50px' %}
+		{% endif %}
+
+		{% if media_item.acf_fc_layout == 'section_header' %}
+
+			{% include 'layout/acf/section-header.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'hero' %}
+
+			{% include 'layout/acf/hero.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'two_column_image' %}
+
+			{% include 'layout/acf/two-column-image.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'two_column_form' %}
+
+			{% include 'layout/acf/two-column-form.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'icon_ctas' %}
+
+			{% include 'layout/acf/icon-ctas.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'solution_selector' %}
+
+			{% include 'layout/acf/solution-selector.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'two_column_download' %}
+
+			{% include 'layout/acf/two-column-download.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'callback_cta' %}
+
+			{% include 'layout/acf/callback-cta.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'secondary_nav' %}
+
+			{% include 'layout/acf/secondary-nav.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'two_column_text' %}
+
+			{% include 'layout/acf/two-column-text.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'module_grid' %}
+
+			{% include 'layout/acf/module-grid.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'breadcrumb_nav' %}
+
+			{% include 'layout/acf/breadcrumb-nav.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'sectors_grid' %}
+
+			{% include 'layout/acf/sectors-grid.twig' %}
+
+		{% endif %}
+
+		{% if media_item.acf_fc_layout == 'hero' %}
+			{% set hero = true %}
+
+			{% else %}
+
+			{% set hero = false %}
+		{% endif %}
+
+	{% endfor %}
+
+	{% include 'footer.twig' with {'pullup': '120'} %}
+{% endblock %}
+

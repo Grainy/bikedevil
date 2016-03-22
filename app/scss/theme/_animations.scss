@@ -1,0 +1,280 @@
+
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+Copyright (c) 2014 Daniel Eden
+*/
+
+// CONFIGURATION
+// ====================================
+
+// Animation class hook
+// Set the class name to trigger animations
+// Defaults to "animated"
+$AnimateHook: "animated";
+
+// Animation duration
+// Sets the hook's animation duration
+// Defaults to 1s
+$AnimateDuration: 1s;
+
+// BASE STYLES
+// ====================================
+//
+// Setting styles for the animation hook class
+
+.#{$AnimateHook} {
+	animation-duration: $AnimateDuration;
+	animation-fill-mode: both;
+
+  // Modifier for infinite repetition
+  &--infinite {
+  	animation-iteration-count: infinite;
+  }
+
+}
+
+// FADING ENTRANCES
+
+@-webkit-keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(-10%, 0, 0);
+		transform: translate3d(-10%, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(-10%, 0, 0);
+		-ms-transform: translate3d(-10%, 0, 0);
+		transform: translate3d(-10%, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		-ms-transform: none;
+		transform: none;
+	}
+}
+
+.fadeInLeft {
+	-webkit-animation-name: fadeInLeft;
+	animation-name:fadeInLeft
+}
+
+@keyframes slideInUp {
+	0% {
+		transform: translateY(100%);
+		visibility: visible;
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.slideInUp {
+	animation-name: slideInUp;
+}
+
+
+@keyframes buttonSolidHover {
+	0% {
+
+
+
+	}
+
+
+	100% {
+		background-color:transparent;
+	}
+}
+
+@keyframes buttonBeforeHover {
+	0% {
+
+
+
+	}
+	98% {
+
+	transform: translate3d(0, 100%, 0);
+
+	}
+
+
+	100% {
+		//background:#000;
+	}
+}
+
+@keyframes buttonAfterHover {
+	0% {
+
+
+
+	}
+	98% {
+
+		transform: translate3d(0, 100%, 0);
+
+	}
+
+	100% {
+		background:transparent;
+	}
+}
+
+
+.buttonHover {
+	animation-name: buttonHover;
+}
+
+
+// FADING ENTRANCES
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+// FADING EXITS
+
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+
+
+// BOUNCING ENTRANCES
+
+@keyframes bounceInRight {
+  0%, 60%, 75%, 90%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.bounceInRight {
+  animation-name: bounceInRight;
+}
+
+
+// BOUNCING EXITS
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.bounceOutRight {
+  animation-name: bounceOutRight;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.slideOutRight {
+  animation-name: slideOutRight;
+}
