@@ -51,14 +51,14 @@
 	    a {
 	    	text-decoration: none;
 	    	text-transform: uppercase;
-	    	color: $brandPink;
+	    	color: $brandYellow;
 	    	font-family: 'zona_probold';
 	    }
 
 	    h3 {
 	    	margin-top: 0;
 	    	a {
-	    		color: $brandPink;
+	    		color: $brandYellow;
 	    		font-family: 'zona_proregular';
 	    		text-transform: none;
 	    		@include rem((

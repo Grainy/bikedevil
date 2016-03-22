@@ -57,7 +57,7 @@
 			&.current-menu-item, &.current-page-ancestor {
 				&:after {
 					@include pseudo-icon($icon-one-dot);
-					color: $brandPink;
+					color: $brandYellow;
 				}
 			}
 
@@ -164,7 +164,7 @@
 				}
 
 				&.dots {
-					background: $brandPink;
+					background: $brandYellow;
 
 					a {
 						color: $white;

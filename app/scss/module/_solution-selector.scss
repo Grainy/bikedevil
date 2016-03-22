@@ -64,7 +64,7 @@
 				}
 
 				&.open {
-					border: 1px solid $brandPink;
+					border: 1px solid $brandYellow;
 					border-top: 0;
 					background: transparent;
 				}
@@ -81,7 +81,7 @@
 				bottom: 50px;
 
 				&.open {
-					border: 1px solid $brandPink;
+					border: 1px solid $brandYellow;
 					border-bottom: 0;
 					top: auto;
 					bottom: 49px;
@@ -105,7 +105,7 @@
 		input[type="submit"] {
 			@extend .b-button;
 			float: left;
-			background: $brandPink;
+			background: $brandYellow;
 			color: $white;
 			padding: 12px 30px;
 			font-family: 'zona_probold';
@@ -133,7 +133,7 @@
 		a {
 			text-decoration: none;
 			font-family: 'zona_probold';
-			color: $brandPink;
+			color: $brandYellow;
 			text-transform: uppercase;
 
 			@include rem((

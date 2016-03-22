@@ -45,7 +45,7 @@
 		}
 
 		&.open {
-			border: 1px solid $brandPink;
+			border: 1px solid $brandYellow;
 			border-bottom: 0;
 			background: transparent;
 		}
@@ -60,7 +60,7 @@
 		margin-top: -1px;
 
 		&.open {
-			border: 1px solid $brandPink;
+			border: 1px solid $brandYellow;
 			border-top: 0;
 
 			@include max-screen($screen-xs-max) {

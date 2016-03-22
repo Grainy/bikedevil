@@ -1,1 +1,0 @@
-body:before{white-space:pre;font-family:monospace;content:"Sass::SyntaxError: \".hide-on-tablets\" failed to @extend \"%hide-on-tablets\".\A The selector \"%hide-on-tablets\" was not found.\A Use \"@extend %hide-on-tablets !optional\" if the extend should be able to fail.\A "}

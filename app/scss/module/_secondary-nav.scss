@@ -37,7 +37,7 @@
 		@include m(slider){
 			width: 129px;
 			height: 1px;
-			background: $brandPink;
+			background: $brandYellow;
 			display: block;
 			position: absolute;
 			bottom: -1px;
@@ -52,7 +52,7 @@
 
 			&.current_page_item {
 				a {
-					color: $brandPink;
+					color: $brandYellow;
 				}
 			}
 
@@ -69,7 +69,7 @@
 				));
 
 				&:hover {
-					color: $brandPink;
+					color: $brandYellow;
 				}
 
 				&:first-child, &:last-child {

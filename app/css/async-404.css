@@ -707,7 +707,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'highcloud' !important;
+  font-family: 'bikedevil' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -842,11 +842,11 @@ div.fancy-select {
   .l-page-section--flush {
     padding: 0; }
   .l-page-section--pink {
-    background-color: #E42181; }
+    background-color: #F8C411; }
     .l-page-section--pink.l-page-section--has-slant:before {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='100,0 100,100 0,100' style='fill:#E42181;' /%3E%3C/svg%3E"); }
   .l-page-section--grey {
-    background-color: #F2F2F2; }
+    background-color: #343433; }
   .l-page-section--greydark {
     background-color: #353535; }
   .l-page-section--black {
@@ -865,7 +865,7 @@ div.fancy-select {
     padding: 30px; }
 
 .l-single-event__sidebar {
-  background: #F2F2F2;
+  background: #343433;
   padding: 30px 30px;
   margin-bottom: 15px; }
   .l-single-event__sidebar h3 {
@@ -905,7 +905,7 @@ div.fancy-select {
   line-height: 34px; }
   .b-related-events__event--title a {
     text-decoration: none;
-    color: #E42181; }
+    color: #F8C411; }
     .b-related-events__event--title a:hover {
       text-decoration: underline; }
 .b-related-events__event--date {
@@ -920,7 +920,7 @@ div.fancy-select {
   line-height: 30px;
   text-transform: uppercase;
   font-family: 'zona_probold';
-  color: #E42181;
+  color: #F8C411;
   text-decoration: none; }
   .b-related-events__event--link:hover {
     text-decoration: underline; }
@@ -939,11 +939,11 @@ Styleguide 2.1.3.
   display: inline-block;
   text-align: center;
   text-transform: uppercase;
-  color: #E42181;
+  color: #F8C411;
   text-decoration: none;
   padding: 10px 15px;
   font-weight: bold;
-  border: 3px solid #E42181;
+  border: 3px solid #F8C411;
   border-radius: 40px;
   font-family: 'zona_proregular';
   -webkit-transition: all .5s ease;
@@ -953,7 +953,7 @@ Styleguide 2.1.3.
   line-height: 20px;
   line-height: 2rem; }
   .b-button:hover, .b-solution-selector form input[type="submit"]:hover {
-    background: #E42181;
+    background: #F8C411;
     color: #fff; }
   @media only screen and (max-width: 767px) {
     .b-button, .b-solution-selector form input[type="submit"] {
@@ -963,14 +963,14 @@ Styleguide 2.1.3.
     border: 3px solid #fff; }
     .b-button--secondary:hover {
       background: #fff;
-      color: #E42181; }
+      color: #F8C411; }
   .b-button--tertiary {
-    background-color: #E42181;
+    background-color: #F8C411;
     color: #fff;
-    border: 3px solid #E42181; }
+    border: 3px solid #F8C411; }
     .b-button--tertiary:hover {
       background: #fff;
-      color: #E42181; }
+      color: #F8C411; }
 
 .b-section-header {
   text-align: center; }
@@ -986,7 +986,7 @@ Styleguide 2.1.3.
         line-height: 36px; } }
     .b-section-header__title:after {
       content: "";
-      font-family: 'highcloud' !important;
+      font-family: 'bikedevil' !important;
       font-size: 12px;
       line-height: 16px;
       display: block;
@@ -1000,7 +1000,7 @@ Styleguide 2.1.3.
           font-size: 8px;
           line-height: 8px; } }
     .b-section-header__title--pink:after {
-      color: #E42181; }
+      color: #F8C411; }
     .b-section-header__title--white {
       color: #fff; }
       .b-section-header__title--white:after {
@@ -1032,7 +1032,7 @@ Styleguide 2.1.3.
     margin-right: -10px; } }
 
 .b-two-column-download__download {
-  border: 2px solid #E42181;
+  border: 2px solid #F8C411;
   background-size: cover;
   border-radius: 15px;
   padding: 10px 30px; }
@@ -1074,7 +1074,7 @@ Styleguide 2.1.3.
   .b-two-column-form__text {
     margin-top: 30px; } }
 .b-two-column-form__form {
-  background: #F2F2F2;
+  background: #343433;
   border: 2px solid #ddd;
   border-radius: 5px;
   padding: 0 15px; }
@@ -1166,7 +1166,7 @@ Styleguide 2.1.3.
       .b-icon-ctas__button {
         margin-top: 0; } }
   .b-icon-ctas.b-icon-ctas--white .b-icon-ctas__icon {
-    border: 5px solid #E42181; }
+    border: 5px solid #F8C411; }
   .b-icon-ctas.b-icon-ctas--white .b-icon-ctas__title {
     color: #4A4A4A; }
   .b-icon-ctas.b-icon-ctas--white .b-icon-ctas__content {
@@ -1242,7 +1242,7 @@ Styleguide 2.1.3.
         top: 22px;
         right: 20px; }
       .b-solution-selector form .fancy-select .trigger.open {
-        border: 1px solid #E42181;
+        border: 1px solid #F8C411;
         border-top: 0;
         background: transparent; }
     .b-solution-selector form .fancy-select .options {
@@ -1256,7 +1256,7 @@ Styleguide 2.1.3.
       top: auto;
       bottom: 50px; }
       .b-solution-selector form .fancy-select .options.open {
-        border: 1px solid #E42181;
+        border: 1px solid #F8C411;
         border-bottom: 0;
         top: auto;
         bottom: 49px; }
@@ -1264,7 +1264,7 @@ Styleguide 2.1.3.
         padding: 14px 0 14px 20px;
         font-family: 'zona_probold';
         color: #4A4A4A;
-        border-top: 1px solid #F2F2F2;
+        border-top: 1px solid #343433;
         text-transform: uppercase;
         font-size: 12px;
         font-size: 1.2rem;
@@ -1272,7 +1272,7 @@ Styleguide 2.1.3.
         line-height: 2rem; }
   .b-solution-selector form input[type="submit"] {
     float: left;
-    background: #E42181;
+    background: #F8C411;
     color: #fff;
     padding: 12px 30px;
     font-family: 'zona_probold';
@@ -1292,7 +1292,7 @@ Styleguide 2.1.3.
 .b-solution-selector__link a {
   text-decoration: none;
   font-family: 'zona_probold';
-  color: #E42181;
+  color: #F8C411;
   text-transform: uppercase;
   font-size: 12px;
   font-size: 1.2rem;
@@ -1333,7 +1333,7 @@ Styleguide 2.1.3.
     .b-secondary-nav__nav--slider {
       width: 129px;
       height: 1px;
-      background: #E42181;
+      background: #F8C411;
       display: block;
       position: absolute;
       bottom: -1px; }
@@ -1342,7 +1342,7 @@ Styleguide 2.1.3.
     .b-secondary-nav__nav--link {
       display: inline-block; }
       .b-secondary-nav__nav--link.current_page_item a {
-        color: #E42181; }
+        color: #F8C411; }
       .b-secondary-nav__nav--link a {
         padding: 14px 30px;
         font-family: 'zona_probold';
@@ -1354,7 +1354,7 @@ Styleguide 2.1.3.
         line-height: 20px;
         line-height: 2rem; }
         .b-secondary-nav__nav--link a:hover {
-          color: #E42181; }
+          color: #F8C411; }
         .b-secondary-nav__nav--link a:first-child, .b-secondary-nav__nav--link a:last-child {
           padding: 14px 30px; }
 
@@ -1455,10 +1455,10 @@ Styleguide 2.1.3.
 .b-module-grid__module a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #E42181;
+  color: #F8C411;
   font-family: 'zona_probold'; }
 .b-module-grid__module.active h3 {
-  color: #E42181; }
+  color: #F8C411; }
 
 .l-archive:before {
   top: -120px; }
@@ -1470,7 +1470,7 @@ Styleguide 2.1.3.
   display: none; }
   .l-archive__post--container {
     padding: 20px;
-    background: #F2F2F2; }
+    background: #343433; }
   .l-archive__post--thumb {
     width: 100%;
     margin-bottom: -8px; }
@@ -1480,7 +1480,7 @@ Styleguide 2.1.3.
     line-height: 34px; }
     .l-archive__post--title a {
       text-decoration: none;
-      color: #E42181; }
+      color: #F8C411; }
       .l-archive__post--title a:hover {
         text-decoration: underline; }
   .l-archive__post--date {
@@ -1495,7 +1495,7 @@ Styleguide 2.1.3.
     line-height: 30px;
     text-transform: uppercase;
     font-family: 'zona_probold';
-    color: #E42181;
+    color: #F8C411;
     text-decoration: none; }
     .l-archive__post--link:hover {
       text-decoration: underline; }
@@ -1512,13 +1512,13 @@ Styleguide 2.1.3.
     .b-sectors-grid .row:last-child {
       margin-bottom: 0 !important; } }
 .b-sectors-grid__sector--content {
-  background: #F2F2F2;
+  background: #343433;
   padding: 30px 20px; }
 @media only screen and (max-width: 767px) {
   .b-sectors-grid__sector {
     margin: 30px 0;
     padding: 20px 10px;
-    background: #F2F2F2; }
+    background: #343433; }
     .b-sectors-grid__sector--content {
       padding: 0; }
     .b-sectors-grid__sector:first-child {
@@ -1533,12 +1533,12 @@ Styleguide 2.1.3.
 .b-sectors-grid__sector a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #E42181;
+  color: #F8C411;
   font-family: 'zona_probold'; }
 .b-sectors-grid__sector h3 {
   margin-top: 0; }
   .b-sectors-grid__sector h3 a {
-    color: #E42181;
+    color: #F8C411;
     font-family: 'zona_proregular';
     text-transform: none;
     font-size: 24px;
@@ -1587,7 +1587,7 @@ Styleguide 2.1.3.
       top: 22px;
       right: 20px; }
     .fancy-select .trigger.open {
-      border: 1px solid #E42181;
+      border: 1px solid #F8C411;
       border-bottom: 0;
       background: transparent; }
   .fancy-select .options {
@@ -1599,7 +1599,7 @@ Styleguide 2.1.3.
     border-radius: 0;
     margin-top: -1px; }
     .fancy-select .options.open {
-      border: 1px solid #E42181;
+      border: 1px solid #F8C411;
       border-top: 0; }
       @media only screen and (max-width: 767px) {
         .fancy-select .options.open {
@@ -1611,7 +1611,7 @@ Styleguide 2.1.3.
       padding: 14px 0 14px 20px;
       font-family: 'zona_probold';
       color: #4A4A4A;
-      border-top: 1px solid #F2F2F2;
+      border-top: 1px solid #343433;
       text-transform: uppercase;
       font-size: 12px;
       font-size: 1.2rem;
