@@ -32,17 +32,13 @@
 
 			{% include 'layout/acf/icon-ctas.twig' %}
 
-		{% elseif media_item.acf_fc_layout == 'solution_selector' %}
-
-			{% include 'layout/acf/solution-selector.twig' %}
-
 		{% elseif media_item.acf_fc_layout == 'two_column_download' %}
 
 			{% include 'layout/acf/two-column-download.twig' %}
 
-		{% elseif media_item.acf_fc_layout == 'callback_cta' %}
+		{% elseif media_item.acf_fc_layout == 'gallery_strip' %}
 
-			{% include 'layout/acf/callback-cta.twig' %}
+			{% include 'layout/acf/gallery-strip.twig' %}
 
 		{% elseif media_item.acf_fc_layout == 'secondary_nav' %}
 
@@ -63,6 +59,14 @@
 		{% elseif media_item.acf_fc_layout == 'sectors_grid' %}
 
 			{% include 'layout/acf/sectors-grid.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'single_column_text' %}
+
+			{% include 'layout/acf/single-column-text.twig' %}
+
+		{% elseif media_item.acf_fc_layout == 'news_blocks' %}
+
+			{% include 'layout/acf/news-blocks.twig' %}
 
 		{% endif %}
 

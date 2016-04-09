@@ -17,8 +17,7 @@
 @include b(l-masthead){
 	width: 100%;
 	height: 90px;
-	background: $white;
-	border-bottom: 1px solid #dddddd;
+	background: $brandGrey;
 	position: fixed;
 	top:0;
 	z-index: 2;
@@ -26,14 +25,17 @@
 
 	@include e(logo) {
 		float: left;
-		width: 171px;
-		height: 47px;
+		width: 350px;
+		height: 69px;
 		background: url("/app/themes/bike-devil/app/img/logo/logo.png") no-repeat;
 		@include image-2x("/app/themes/bike-devil/app/img/logo/logo@2x.png", contain);
 		@extend %rel-center-v;
+		background-size: cover;
 
 		@include max-screen($screen-sm) {
 			margin-left: 20px;
+			width: 220px;
+			height: 49px;
 		}
 	}
 
@@ -54,46 +56,32 @@
 				margin-right: 0;
 			}
 
-			&.current-menu-item, &.current-page-ancestor {
+			&.current-menu-item, &.current-page-ancestor, &:hover {
 				&:after {
-					@include pseudo-icon($icon-one-dot);
-					color: $brandYellow;
+					content: " ";
+					display: block;
+					width: 100%;
+					height: 2px;
+					background: $brandYellow;
+					position: absolute;
 				}
 			}
 
 			a {
 				text-decoration: none;
-				text-transform: uppercase;
-				font-family: 'zona_probold';
-				color: $header-link-color;
+				font-family: $font-family;
+				color: $brandYellow;
 
 				@include rem((
-					font-size: 12px,
+					font-size: 18px,
 					line-height: 20px
 				));
 
 				@include max-screen($screen-sm) {
 					@include rem((
-						font-size: 11px,
+						font-size: 12px,
 						line-height: 16px
 					));
-				}
-
-				&:hover {
-					color: $accent;
-
-					&:after {
-						@include pseudo-icon($icon-one-dot);
-					}
-				}
-			}
-
-			&.dots {
-				a {
-					color: $accent;
-					&:after {
-						@include pseudo-icon;
-					}
 				}
 			}
 		}
@@ -122,12 +110,11 @@
 		}
 
 		@include m(mobile-header) {
-			background: $brandGrey;
+			// background: $brandGrey;
 			float: left;
 			width: 100%;
 			padding: 31px 25px;
 			height: 90px;
-			border-bottom: 1px solid #DDDDDD;
 
 			h6 {
 				float: left;
@@ -153,10 +140,9 @@
 				}
 
 				a {
-					font-size: 16px;
+					font-size: 18px;
 					line-height: 24px;
-					text-transform: uppercase;
-					font-family: 'zona_probold';
+					font-family: $font-family;
 					color: $body-font-color;
 					text-decoration: none;
 					display: block;
@@ -185,8 +171,7 @@
 				a {
 					font-size: 14px;
 					line-height: 34px;
-					text-transform: uppercase;
-					font-family: 'zona_probold';
+					font-family: $font-family;
 					color: $body-font-color;
 					text-decoration: none;
 				}

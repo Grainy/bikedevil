@@ -28,6 +28,8 @@ var boilerAPP = (function($) {
 	var init = function() {
 		_bindEvents();
 		_headroom();
+		_ctas();
+		_slider();
 	};
 
 	var _bindEvents = function() {
@@ -53,6 +55,27 @@ var boilerAPP = (function($) {
 		    "unpinned": "slideUp"
 		  }
 		});
+	};
+
+	var _ctas = function() {
+		$('.b-call-to-action').each(function(index, val) {
+			var width = $('.b-call-to-action').eq(index).width();
+
+			$('.b-call-to-action').eq(index).css('height', width);		
+		});
+	};
+
+	var _slider = function() {
+		$('.l-gallery-strip').slick({
+			slidesToShow: 6,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			arrows: true,
+			prevArrow: '<a class="slider-prev"></a>',
+			nextArrow: '<a class="slider-next"></a>',
+		});
+		$('.l-gallery-strip').slickLightbox();
 	};
 
 	// ==== SCRIPTS ==== //

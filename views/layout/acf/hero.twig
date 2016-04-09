@@ -26,35 +26,26 @@
 				<ul class="slides h-100">
 					{% for slide in slider %}
 						<li class="l-hero__slide" style="background-image:url('{{slide.image}}')">
-							{% if slide.is_home %}
-								<div class="col-sm-5 l-hero__left-text" style="background-image:url('{{site.theme.link}}/app/img/tmp/hi@2x.png')"></div>
-
-								<div class="col-sm-7 l-hero__right-text">
-									<h2>{{slide.title}}</h2>
-								</div>
-
-								{% else %}
-
-								<div class="l-hero__generic-text">
-									<div class="col-lg-8 col-lg-offset-2 text-center">
-										<h2 {% if smaller %}class="smaller"{% endif %}>{{slide.title}}</h2>
-										{% if slide.sub_title %}
-											<h3>{{slide.sub_title}}</h3>
-										{% endif %}
-
-										{% if slide.has_solution_selector %}
-											<div class="row solution-toggle show-on-all-phones">
-												<a href="#" class="b-button b-button--tertiary js-solution-toggle">Tell us about your role</a>
-											</div>
-
-											<div class="row dont-show-me-on-phones js-solution-container">
-												{% include 'module/solution-selector.twig' %}
-											</div>
-										{% endif %}
+							<div class="container">
+								<div class="row">
+									<div class="l-hero__generic-text">
+										<div class="col-md-5 col-xs-6 col-xs-offset-3 col-sm-offset-0">
+											<h2 {% if smaller %}class="smaller"{% endif %}>{{slide.title}}</h2>
+											{% if slide.sub_title %}
+												<h3>{{slide.sub_title}}</h3>
+											{% endif %}
+											{% if slide.has_button %}
+												{% for button in slide.buttons %}
+													{% if button.button_theme == 'white' %}
+														{% set class = 'b-button--secondary' %}
+													{% endif %}
+												    <a href="{{button.link}}" class="b-button {{class}}">{{button.button_text}}</a>
+												{% endfor %}
+											{% endif %}
+										</div>
 									</div>
 								</div>
-
-							{% endif %}
+							</div>
 						</li>
 					{% endfor %}
 				</ul>

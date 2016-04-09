@@ -4,7 +4,7 @@
 
 {% include 'layout/acf/hero.twig' with { 'postType': 'single' } %}
 
-{% include 'layout/acf/breadcrumb-nav.twig' with { 'slant' : 'true' } %}
+{% include 'layout/acf/breadcrumb-nav.twig' %}
 
 <div class="l-page-section l-single-event">
 	<div class="container">
@@ -74,8 +74,6 @@
 		</div>
 	</div>
 {% endif %}
-
-{% include 'layout/acf/callback-cta.twig' %}
 
 {% include 'footer.twig' with {'pullup': '120'} %}
 {% endblock %}

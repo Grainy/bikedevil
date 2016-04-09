@@ -37,5 +37,7 @@
 {% elseif function('is_archive') %}
 
 	{{function('injectCSS', 'async-archive')}}
+{% else %}
 
+	{{function('injectCSS', 'async-archive')}}
 {% endif %}

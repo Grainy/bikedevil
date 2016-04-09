@@ -1,0 +1,56 @@
+@include b(b-tweet){
+	background-image: url("/app/themes/bike-devil/app/img/bg/tweet-bg.jpg");
+	background-size: cover;
+	background-position: bottom left;
+	min-height: 304px;
+	position: relative;
+	margin-bottom: 15px;
+	padding: 25px 27px;
+	background-color: $brandYellow;
+
+	@include e(content) {
+		color: $brandGrey;
+		word-wrap: break-word;
+		font-size: 22px;
+
+		a {
+			color: $brandGrey;
+			font-size: 22px;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	@include e(link) {
+		position: absolute;
+		bottom: 0;
+		color: $white;
+		width: 100%;
+		left: 0;
+
+		.icon-twitter {
+			font-size: 30px;
+			margin-left: 25px;
+			position: relative;
+			top: 9px;
+			border-radius: 8px;
+		}
+
+		a {
+			background: $brandGrey;
+			color: $white;
+			display: block;
+			float: right;
+			padding: 10px;
+			border-top-left-radius: 15px;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

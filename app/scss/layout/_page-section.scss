@@ -1,43 +1,7 @@
 @include b(l-page-section){
-	padding: 0 10px 25px 10px;
+	padding: 15px 0;
 	background-color: inherit;
 	position: relative;
-
-	@include min-screen($screen-sm){
-		padding:31px 0 50px;
-	}
-
-	@include m(has-slant){
-		padding-top: 0px;
-		margin-top: 50px;
-
-		@include max-screen($screen-xs-max) {
-			margin-top: 0;
-		}
-
-		&.no-margin {
-			margin-top: 0;
-		}
-
-		&:before {
-			background-repeat: no-repeat;
-			background-size: 100% 100%;
-			content: '';
-			display: block;
-			position: absolute;
-			width: 100%;
-			left: 0;
-			top: -70px;
-			height: 70px;
-			z-index: 1;
-			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='100,0 100,100 0,100' style='fill:white;' /%3E%3C/svg%3E");
-
-			@include max-screen($screen-xs-max) {
-				top: -40px;
-				height: 40px;
-			}
-		}
-	}
 
 	@include m(flush){
 		padding:0;
@@ -45,12 +9,6 @@
 
 	@include m(pink){
 		background-color: $brandYellow;
-
-		&.l-page-section--has-slant {
-			&:before {
-				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='100,0 100,100 0,100' style='fill:#E42181;' /%3E%3C/svg%3E");
-			}
-		}
 	}
 
 	@include m(grey){

@@ -52,14 +52,14 @@
 	    	text-decoration: none;
 	    	text-transform: uppercase;
 	    	color: $brandYellow;
-	    	font-family: 'zona_probold';
+	    	font-family: $header-font-family;
 	    }
 
 	    h3 {
 	    	margin-top: 0;
 	    	a {
 	    		color: $brandYellow;
-	    		font-family: 'zona_proregular';
+	    		font-family: $font-family;
 	    		text-transform: none;
 	    		@include rem((
 	    			font-size: 24px,

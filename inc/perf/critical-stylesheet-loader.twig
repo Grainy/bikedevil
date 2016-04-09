@@ -41,4 +41,6 @@
 {% elseif function('is_singular') %}
 	{% include 'app/css/critical-single-post.css' %}
 
+{% else %}
+	{% include 'app/css/critical-archive.css' %}
 {% endif %}

@@ -1,0 +1,21 @@
+@include b(b-call-to-action){
+	background-position: center center;
+	background-size: cover;
+	margin-bottom: 25px;
+
+	a {
+		color: $white;
+		font-family: $hero-font-family;
+		font-size: 30px;
+		width: 100%;
+		text-align: center;
+		text-decoration: none;
+		display: block;
+		height: 100%;
+
+		span {
+			@extend %ab-center;
+			width: 100%;
+		}
+	}
+}

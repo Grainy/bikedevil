@@ -1,0 +1,38 @@
+<div class="l-archive">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 l-archive__row js-match-height">
+				<div class="loading">
+					<img src="{{site.theme.link}}/app/img/ui/ajax-loader.gif" alt="">
+				</div>
+				<div class="cta-container">
+					{% for cta in media_item.call_to_action %}
+					    <div class="col-md-6">
+					    	<div class="b-call-to-action" style="background-image: url({{cta.image}});">
+					    		<a href="{{cta.link}}" class="b-call-to-action__text"><span>{{cta.title}}</span></a>
+					    	</div>
+					    </div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-4">
+				{% for tweet in tweets %}
+				   <div class="b-tweet col-md-12">
+				   		<span class="b-tweet__content">{{tweet.description}}</span>
+
+				   		<div class="b-tweet__link">
+				   			<span class="icon-twitter"></span>
+				   			<a href="http://twitter.com/bikedevil" target="_blank">@BikeDevil</a>
+				   		</div>
+				   </div> 
+				{% endfor %}
+			</div>
+		</div>
+
+		{% if function('wpmd_is_device') or (function('wpmd_is_ios') and function('wpmd_is_chrome_browser')) %}
+			<div class="text-center">
+				<a href="#" class="b-button b-button--tertiary js-load-more">Load More</a>
+			</div>
+		{% endif %}
+	</div>
+</div>

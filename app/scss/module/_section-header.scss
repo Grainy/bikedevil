@@ -15,34 +15,8 @@
 			line-height: 36px;
 		}
 
-		&:after {
-			@include pseudo-icon($icon-one-dot, 12px);
-
-			@include max-screen($screen-xs-max) {
-				font-size: 8px;
-				line-height: 8px;
-			}
-		}
-
-		//MOD's
-		@include m(pink) {
-			&:after {
-				color: $brandYellow;
-			}
-		}
-
 		@include m(white) {
 			color: $white;
-
-			&:after {
-				color: $white;
-			}
-		}
-
-		@include m(noAfter) {
-			&:after {
-				display: none;
-			}
 		}
 	}
 
@@ -52,7 +26,7 @@
 		padding:0 15px;
 
 		p {
-			font-family: 'zona_prosemibold';
+			font-family: $header-font-family;
 			margin-bottom: 0;
 
 			@include rem((

@@ -33,6 +33,17 @@ footer {
 }
 
 @include b(l-footer-bottom){
+	li, a {
+		text-decoration: none;
+		list-style-type: none;
+		color: $brandYellow;
+
+		@include rem((
+			font-size: 12px,
+			line-height: 20px
+		));
+	}
+
 	@include e(bikedevil) {
 		position: relative;
 		float: left;
@@ -68,17 +79,6 @@ footer {
 			margin: 0;
 		}
 
-		li, a {
-			text-decoration: none;
-			text-transform: uppercase;
-			font-family: 'zona_probold';
-			color:#9B9B9B;
-
-			@include rem((
-				font-size: 12px,
-				line-height: 20px
-			));
-		}
 
 		li {
 			&:after {
@@ -128,7 +128,7 @@ footer {
 
 		li, a {
 			text-decoration: none;
-			color:#9B9B9B;
+			color: $brandYellow;
 		}
 
 		li {

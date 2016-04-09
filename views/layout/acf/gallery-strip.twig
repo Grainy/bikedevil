@@ -1,0 +1,5 @@
+<div class="l-gallery-strip">
+	{% for image in media_item.gallery %}
+	    <a href="{{image.image.url}}" data-caption=""><img src="{{image.image.url|resize(250, 250)}}" alt=""></a>
+	{% endfor %}
+</div>

@@ -8,6 +8,8 @@
 		return;
 	}
 
+	$tweets = get_twitter_feed('BikeDevil');
+
 	$context = Timber::get_context();
 	$post = new TimberPost();
 
@@ -22,6 +24,7 @@
 		'echo'            => true
 	);
 
+	$context['tweets'] = $tweets;
 	$context['post'] = $post;
 
 	$templates = array('page-templates/page-builder.twig');

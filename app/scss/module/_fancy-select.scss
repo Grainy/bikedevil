@@ -21,7 +21,7 @@
 		border-radius: 0;
 		padding: 14px 40px 14px 20px;
 		text-align: left;
-		font-family: 'zona_probold';
+		font-family: $header-font-family;
 		color: $body-font-color;
 		text-transform: uppercase;
 		font-size: 12px;
@@ -73,7 +73,7 @@
 
 		li {
 			padding: 14px 0 14px 20px;
-			font-family: 'zona_probold';
+			font-family: $header-font-family;
 			color: $body-font-color;
 			border-top: 1px solid $brandGrey;
 			text-transform: uppercase;

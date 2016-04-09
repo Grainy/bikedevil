@@ -63,8 +63,8 @@
 		h2 {
 			color: $white;
 			@include rem((
-				font-size: 70px,
-				line-height: 84px
+				font-size: 48px,
+				line-height: 60px
 			));
 
 			@include max-screen($screen-xs-max) {
@@ -79,7 +79,7 @@
 		}
 
 		strong {
-			font-family: 'zona_probold';
+			font-family: $hero-font-family;
 
 			@include rem((
 				font-size: 70px,
@@ -95,11 +95,9 @@
 
 	@include e(generic-text) {
 		@include min-screen($screen-sm) {
-			position: relative;
+			position: absolute;
 			top: 50%;
-			transform: translate(-50%,-50%);
-			float: left;
-			left: 50%;
+			transform: translate(0%,-50%);
 			width: 100%;
 		}
 
@@ -107,6 +105,7 @@
 			position: relative;
 			top: 100%;
 			transform: translate(0%, -100%);
+			text-align: center;
 		}
 
 		@include max-screen($screen-xs-max) {
@@ -118,57 +117,43 @@
 
 		h2 {
 			color: $white;
-			font-family: 'zona_probold';
+			font-family: $hero-font-family;
 			margin: 0;
+
 			@include rem((
-				font-size: 70px,
-				line-height: 84px
+				font-size: 48px,
+				line-height: 30px
 			));
 			@include max-screen($screen-xs-max) {
-				font-size: 26px;
+				font-size: 24px;
 				line-height: 36px;
 			}
 
 
 			&.smaller {
-				font-family: 'zona_proregular';
+				font-family: $font-family;
 				@include rem((
-					font-size: 48px,
-					line-height: 66px
+					font-size: 36px,
+					line-height: 36px
 				));
 
 				@include max-screen($screen-xs-max) {
-					font-size: 24px;
-					line-height: 36px;
+					font-size: 26px;
+					line-height: 26px;
 				}
 			}
 		}
 
 		h3 {
 			color: $white;
+			font-family: $header-font-family;
 			@include rem((
-				font-size: 22px,
-				line-height: 32px
+				font-size: 24px,
+				line-height: 30px
 			));
 
 			@include max-screen($screen-xs-max) {
 				display: none;
-			}
-		}
-
-		.solution-toggle {
-			a {
-				margin: 18px 0;
-				max-width: 80%;
-			}
-		}
-
-		.b-solution-selector form {
-			background-color: transparent;
-			border: none;
-
-			.trigger {
-				background-color: $white !important;
 			}
 		}
 	}

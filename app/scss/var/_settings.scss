@@ -72,7 +72,9 @@ $max-device-width: 2880px;						// Max Document Size
 $nav-distance: 0; 							// Navigation distance from the top of the viewport
 
 // Typography
-$font-family: 'zona_proregular';
+$font-family: 'source_sans_proregular';
+$hero-font-family: 'droid_serifbold';
+$header-font-family: 'droid_serifregular';
 $font-style-italic: italic;
 $icons: entypo;
 $font-smoothing: antialiased;
@@ -120,8 +122,9 @@ $black: #000;
 $white: #fff;
 $brandRed:#ED380F;
 $brandYellow:#F8C411;
-$brandGrey:#343433;
+$brandGrey:#383737;
 $brandGreyDark:#353535;
+$brandGreyLight:#aaa9a8;
 
 // User Interface Colors
 $global-bg-color: $white;

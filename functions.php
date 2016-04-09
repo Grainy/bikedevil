@@ -25,8 +25,6 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page('Archives');
 	acf_add_options_page('Tracking Scripts');
 	acf_add_options_page('Global Modules');
-	acf_add_options_page('Solution Selector');
-	acf_add_options_page('Grids');
 }
 
 require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
@@ -267,7 +265,6 @@ class StarterSite extends TimberSite {
 	function add_to_twig($twig){
 		/* this is where you can add your own fuctions to twig */
 		$twig->addExtension(new SortByFieldExtension());
-		$twig->addExtension(new Twig_Extensions_Extension_Intl());
 		return $twig;
 	}
 }
@@ -379,13 +376,17 @@ add_action( 'widgets_init', '_widgets_init' );
  */
 function _scripts() {
 	//wp_enqueue_style( '-style', get_stylesheet_uri() );
-	if (get_post_type() == 'events') {
+	if (get_post_type() == 'posts') {
 		$this_tax = 'events_category';
 	} else if (get_post_type() == 'careers') {
 		$this_tax = 'careers_category';
 	} else {
 		$this_tax = '';
 	}
+
+	$pageTemplate = get_page_template();
+	$pageArray = explode("/", $pageTemplate); 
+	$pageTemplate = end($pageArray);
 
 	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'js-core', get_template_directory_uri() . '/build/js/core.min.js', array(), '20120206', true );
@@ -396,7 +397,15 @@ function _scripts() {
     wp_localize_script( 'js-app', 'post_type', get_post_type() );
     wp_localize_script( 'js-app', 'this_tax', $this_tax );
     wp_localize_script( 'js-app', 'is_archive', is_archive() );
+    wp_localize_script( 'js-app', 'is_home', is_home() );
+    wp_localize_script( 'js-app', 'is_front', is_page_template('page.php' ) );
     wp_localize_script( 'js-app', 'is_device', wpmd_is_device() );
+
+    if($pageTemplate == 'page.php') :
+    	wp_localize_script( 'js-app', 'is_news', true );
+    else:
+    	wp_localize_script( 'js-app', 'is_news', false );
+    endif;
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -438,136 +447,6 @@ require get_template_directory() . '/inc/jetpack.php';
  * Register required ACF
  */
 require get_template_directory() . '/inc/setup/acf-reg.php';
-
-// Register Custom Post Type
-function cpt_events() {
-
-	$labels = array(
-		'name'                  => _x( 'Events', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Event', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Events', 'text_domain' ),
-		'name_admin_bar'        => __( 'Events', 'text_domain' ),
-		'archives'              => __( 'Event Archives', 'text_domain' ),
-		'parent_item_colon'     => __( 'Parent Event:', 'text_domain' ),
-		'all_items'             => __( 'All Events', 'text_domain' ),
-		'add_new_item'          => __( 'Add New Event', 'text_domain' ),
-		'add_new'               => __( 'Add New Event', 'text_domain' ),
-		'new_item'              => __( 'New Event', 'text_domain' ),
-		'edit_item'             => __( 'Edit Event', 'text_domain' ),
-		'update_item'           => __( 'Update Event', 'text_domain' ),
-		'view_item'             => __( 'View Event', 'text_domain' ),
-		'search_items'          => __( 'Search Events', 'text_domain' ),
-		'not_found'             => __( 'No events found', 'text_domain' ),
-		'not_found_in_trash'    => __( 'No events found in Trash', 'text_domain' ),
-		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-		'insert_into_item'      => __( 'Insert into event', 'text_domain' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this event', 'text_domain' ),
-		'items_list'            => __( 'Events list', 'text_domain' ),
-		'items_list_navigation' => __( 'Events list navigation', 'text_domain' ),
-		'filter_items_list'     => __( 'Filter events list', 'text_domain' ),
-	);
-	$args = array(
-		'label'                 => __( 'Event', 'text_domain' ),
-		'description'           => __( 'Events Organiser', 'text_domain' ),
-		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
-		'taxonomies'            => array( 'events_category' ),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive' 			=> 'events',
-		'rewrite' 				=> array( 'slug' => 'events','with_front' => FALSE),
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-	);
-
-	register_taxonomy(
-		'events_category',
-		array( 'event' ),
-		array( 'hierarchical' => true,
-			'label' => __('Category', 'events_category'),
-			'query_var' => 'events_category',
-			'rewrite' => array( 'slug' => 'events_category' )
-		)
-	);
-
-	register_post_type( 'events', $args );
-
-}
-add_action( 'init', 'cpt_events', 0 );
-function cpt_careers() {
-
-	$labels = array(
-		'name'                  => _x( 'Careers', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Career', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Careers', 'text_domain' ),
-		'name_admin_bar'        => __( 'Careers', 'text_domain' ),
-		'archives'              => __( 'Career Archives', 'text_domain' ),
-		'parent_item_colon'     => __( 'Parent Career:', 'text_domain' ),
-		'all_items'             => __( 'All Careers', 'text_domain' ),
-		'add_new_item'          => __( 'Add New Career', 'text_domain' ),
-		'add_new'               => __( 'Add New Career', 'text_domain' ),
-		'new_item'              => __( 'New Career', 'text_domain' ),
-		'edit_item'             => __( 'Edit Career', 'text_domain' ),
-		'update_item'           => __( 'Update Career', 'text_domain' ),
-		'view_item'             => __( 'View Career', 'text_domain' ),
-		'search_items'          => __( 'Search Careers', 'text_domain' ),
-		'not_found'             => __( 'No careers found', 'text_domain' ),
-		'not_found_in_trash'    => __( 'No careers found in Trash', 'text_domain' ),
-		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-		'insert_into_item'      => __( 'Insert into career', 'text_domain' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this career', 'text_domain' ),
-		'items_list'            => __( 'Careers list', 'text_domain' ),
-		'items_list_navigation' => __( 'Careers list navigation', 'text_domain' ),
-		'filter_items_list'     => __( 'Filter careers list', 'text_domain' ),
-	);
-	$args = array(
-		'label'                 => __( 'Career', 'text_domain' ),
-		'description'           => __( 'Careers Organiser', 'text_domain' ),
-		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
-		'taxonomies'            => array( 'careers_category' ),
-		'hierarchical'          => false,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive' 			=> 'careers',
-		'rewrite' 				=> array( 'slug' => 'careers','with_front' => FALSE),
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-	);
-
-	register_taxonomy(
-		'careers_category',
-		array( 'career' ),
-		array( 'hierarchical' => true,
-			'label' => __('Category', 'careers_category'),
-			'query_var' => 'careers_category',
-			'rewrite' => array( 'slug' => 'careers_category' )
-		)
-	);
-
-	register_post_type( 'careers', $args );
-
-}
-add_action( 'init', 'cpt_careers', 0 );
 
 
 // Grav forms placeholder support
@@ -664,4 +543,27 @@ function json_api_encode_acf($post) {
     }
 
     return $post;
+}
+
+function get_twitter_feed($q)
+{
+    $twitterPath = locate_template('tweets.php' );
+
+    if(empty($twitterPath)) return;
+
+    require_once($twitterPath);
+
+    $tweets = get_latest_tweets($q,
+        "0iHLv05OwZjMsmONaNOGN35sf",                             // Customer Key
+        "h0OqzS8OhEg6LGtozqiQiJAVgYJmdSIbaiZ9POrfH5CrqzSQkY",    // Customer Secret
+        "227463482-Ebh3iflZHPebyUsvTr4DTzZJPOtx81lwZH5RcMZ8",    // Access Token
+        "6rJ2G7ykbYMztNbrm4Bkqu9deHvk1q6wp3tc4NwwfQKtQ",         // Access Token Secret
+        null,                                                    // Cache file (null = default)
+        0,                                                       // Seconds to cache feed (Default : 10 minute)
+        4,                                                       // Number of tweets you would like to display. (Default : 5)
+        true,                                                    // Ignore replies from the timeline. (Default : false)
+        true                                                     // Include retweets. (Default : false)
+    );
+
+    return $tweets;
 }

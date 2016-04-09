@@ -169,7 +169,7 @@ ol {
 		    counter-increment: item;
 		    display: block;
 		    text-align: right;
-		    font-family: 'zona_probold';
+		    font-family: $header-font-family;
 		    font-weight: 600;
 		    padding-top: 5px;
 		    position: absolute;
