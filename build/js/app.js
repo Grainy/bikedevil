@@ -10,6 +10,7 @@ var ajaxLoop = (function($) {
 		var page = 1; 			// Current page
 		var loading = false;	// Is a request being made?
 		var filter = null; 		// Filter posts by (default : null)
+		var category = 'Latest Posts';
 		var maxPages; 			// Amount of pages in archive
 		var url; 				// URL to pass to ajax request
 		var date; 				// Date of creation
@@ -19,7 +20,7 @@ var ajaxLoop = (function($) {
 			posts_per_page = 4;
 		}
 
-		var load_posts = function(filter){
+		var load_posts = function(filter, category){
 			if (loading === false) {
 				loading = true;
 
@@ -68,9 +69,11 @@ var ajaxLoop = (function($) {
 							console.log('Post: ' + initialLoad);
 
 							if (i === 0 && initialLoad) {
-								console.log($('.l-archive__row').length);
+								$('.l-archive__row').before('<h2 class="col-md-6 l-archive__title"><a href="#">'+ category +'</a></h2>'
+								);
+
 								$('.l-archive__row').prepend(
-										'<h2 class="col-md-6 l-archive__title"><a href="#">Latest News</a></h2>'+
+										
 										'<div class="col-sm-12 l-archive__post l-archive__post--featured l-archive__post--'+i+'">'+
 											'<a href="'+ data[i].link +'" class="l-archive__post--thumb-container">'+
 												'<img src="'+ data[i].thumb_url +'" alt="" class="l-archive__post--thumb">'+
@@ -132,40 +135,50 @@ var ajaxLoop = (function($) {
 		$('[data-cat]').on('click', function(event) {
 			event.preventDefault();
 			var thisCat = $(this).data('cat');
+			var thisText = $(this).text();
 			var filter;
+			var category;
 
 			// If all, show all posts
 			if (thisCat === 'all') {
 				filter = null;
+				category = 'Latest News';
 			} else {
 				filter = thisCat;
+				category = thisText;
 			}
 
+			$('.l-archive__title').remove();
 			$('.l-archive__row').empty();
 
 			//Reset pagination
 			page = 1;
 			initialLoad = true;
-			load_posts(filter);
+			load_posts(filter, category);
 		});
 
 		$('.js-archive-filter').on('change.fs', function () {
 		    var thisCat = this.value;
+		    var thisText = this.text();
 		    var filter;
+		    var caetgory;
 
 		    // If all, show all posts
 		    if (thisCat === 'all') {
 		    	filter = null;
+		    	category = 'Latest News';
 		    } else {
 		    	filter = thisCat;
+		    	category = thisText;
 		    }
 
+		    $('.l-archive__title').remove();
 		    $('.l-archive__row').empty();
 
 		    //Reset pagination
 		    page = 1;
 		    initialLoad = true;
-		    load_posts(filter);
+		    load_posts(filter, category);
 		});
 
 		if (is_archive && is_news === true) {
@@ -185,7 +198,7 @@ var ajaxLoop = (function($) {
 		});
 
 
-		load_posts(filter);
+		load_posts(filter, category);
 	};
 
 	return {
@@ -194,6 +207,125 @@ var ajaxLoop = (function($) {
 
 })(jQuery);
 
+
+;(function($) {
+	// Browser supports HTML5 multiple file?
+	var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
+		isIE = /msie/i.test( navigator.userAgent );
+
+	$.fn.customFile = function() {
+		return this.each(function() {
+
+		var $file = $(this).addClass('custom-file-upload-hidden'), // the original file input
+			$wrap = $('<div class="file-upload-wrapper">'),
+			$input = $('<input type="text" class="file-upload-input" />'),
+			// Button that will be used in non-IE browsers
+			$button = $('<button type="button" class="file-upload-button">Choose File</button>'),
+			// Hack for IE
+			$label = $('<label class="file-upload-button" for="'+ $file[0].id +'">Choose File</label>');
+
+			// Hide by shifting to the left so we
+			// can still trigger events
+			$file.css({
+				position: 'absolute',
+				left: '-9999px'
+			});
+
+			$wrap.insertAfter( $file ).append( $file, $input, ( isIE ? $label : $button ) );
+
+			// Prevent focus
+			$file.attr('tabIndex', -1);
+			$button.attr('tabIndex', -1);
+
+			$button.click(function () {
+				$file.focus().click(); // Open dialog
+			});
+
+			$file.change(function() {
+				var files = [], fileArr, filename;
+
+				// If multiple is supported then extract
+				// all filenames from the file array
+		        if ( multipleSupport ) {
+		        	fileArr = $file[0].files;
+
+					for ( var i = 0, len = fileArr.length; i < len; i++ ) {
+						files.push( fileArr[i].name );
+					}
+
+					filename = files.join(', ');
+
+					// If not supported then just take the value
+					// and remove the path to just show the filename
+				} else {
+					filename = $file.val().split('\\').pop();
+				}
+
+				$input.val( filename ) // Set the value
+					.attr('title', filename) // Show filename in title tootlip
+					.focus(); // Regain focus
+			});
+
+			$input.on({
+				blur: function() { $file.trigger('blur'); },
+				keydown: function( e ) {
+					if ( e.which === 13 ) { // Enter
+						if ( !isIE ) { $file.trigger('click'); }
+					} else if ( e.which === 8 || e.which === 46 ) { // Backspace & Del
+						// On some browsers the value is read-only
+						// with this trick we remove the old input and add
+						// a clean clone with all the original events attached
+						$file.replaceWith( $file = $file.clone( true ) );
+						$file.trigger('change');
+						$input.val('');
+					} else if ( e.which === 9 ){ // TAB
+						return;
+					} else { // All other keys
+						return false;
+					}
+				}
+			});
+		});
+	};
+
+	// Old browser fallback
+	if ( !multipleSupport ) {
+		$( document ).on('change', 'input.customfile', function() {
+			var $this = $(this);
+				// Create a unique ID so we
+				// can attach the label to the input
+			var uniqId = 'customfile_'+ (new Date()).getTime();
+			var $wrap = $this.parent();
+
+			// Filter empty input
+			var $inputs = $wrap.siblings().find('.file-upload-input').filter(function(){ return !this.value; });
+			var $file = $('<input type="file" id="'+ uniqId +'" name="'+ $this.attr('name') +'"/>');
+
+			// 1ms timeout so it runs after all other events
+			// that modify the value have triggered
+			setTimeout(function() {
+				// Add a new input
+				if ( $this.val() ) {
+			    	// Check for empty fields to prevent
+			    	// creating new inputs when changing files
+					if ( !$inputs.length ) {
+						$wrap.after( $file );
+						$file.customFile();
+					}
+			        // Remove and reorganize inputs
+				} else {
+					$inputs.parent().remove();
+					// Move the input so it's always last on the list
+					$wrap.appendTo( $wrap.parent() );
+					$wrap.find('input').focus();
+				}
+			}, 1);
+		});
+	}
+
+}(jQuery));
+
+jQuery('input[type=file]').customFile();
 
 var mobileNav = (function($) {
 	var self = this;
@@ -416,6 +548,51 @@ var slider = (function($) {
 })(jQuery);
 
 
+var stickyWidget = (function($) {
+	var self = this;
+	var active;
+
+	var init = function() {
+		_bind();
+	};
+
+	var _bind = function() {
+		var $el = $('.b-popular-posts');
+		var elementOffset = $el.offset().top;
+		var elementOffsetLeft = $el.offset().left;
+		var elementWidth = $el.outerWidth();
+
+		$(window).scroll(function() {
+			var scrollTop = $(window).scrollTop();
+			var distance = (elementOffset - scrollTop);
+
+			if (scrollTop + 105 > elementOffset && distance <= 0) {
+				if (!active) {
+					active = true;
+					$('.b-popular-posts').addClass('fixed');
+					$('.b-popular-posts').css({
+						left : elementOffsetLeft,
+						width : elementWidth
+					});
+				}
+			} else {
+				if (active) {
+					$('.b-popular-posts').removeClass('fixed');
+					$('.b-popular-posts').css('left', 'auto');
+
+					active = false;
+				}
+			}
+		});
+	};
+
+	return {
+		init: init
+	};
+
+})(jQuery);
+
+
 var boilerAPP = (function($) {
 	var self = this;
 
@@ -448,6 +625,10 @@ var boilerAPP = (function($) {
 		_headroom();
 		_ctas();
 		_slider();
+
+		$(window).resize(function() {
+			_ctas();
+		});
 	};
 
 	var _bindEvents = function() {
@@ -458,6 +639,8 @@ var boilerAPP = (function($) {
 			parent.history.back();
 			return false;
 		});
+
+		$('select').fancySelect();
 	};
 
 	var _headroom = function() {
@@ -492,6 +675,42 @@ var boilerAPP = (function($) {
 			arrows: true,
 			prevArrow: '<a class="slider-prev"></a>',
 			nextArrow: '<a class="slider-next"></a>',
+
+			responsive: [{
+				breakpoint: 1200,
+					settings: {
+						slidesToShow: 6,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 960,
+					settings: {
+						slidesToShow: 3,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 800,
+					settings: {
+						slidesToShow: 2,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 500,
+					settings: {
+						slidesToShow: 1,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+
+			}]
 		});
 		$('.l-gallery-strip').slickLightbox();
 	};
@@ -507,10 +726,13 @@ jQuery(document).ready(function($) {
 	boilerAPP.init();
 	slider.init();
 	mobileNav.init();
+	ajaxLoop.init();
 
 	if ($('.b-secondary-nav__nav').length > 0) {
 		secondaryNav.init();
 	}
 
-	ajaxLoop.init();
+	if ($('.b-popular-posts').length > 0 && $(window).width() >= 991) {
+		stickyWidget.init();
+	}
 });

@@ -5,13 +5,11 @@
 }
 
 @mixin placeholder-style {
-  	font-family: $header-font-family;
-  	text-transform: uppercase;
+  	font-family: $font-family;
     font-size: 10px;
     line-height: 25px;
-    color: #7B7B7B;
+    color: $brandGrey;
     @include min-screen($screen-sm-min){
  		font-size: 12px;
- 		//line-height: 25px;
     }
 }

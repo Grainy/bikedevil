@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{{function('wpb_set_post_views', post.id)}}
+
 {% include 'layout/acf/hero.twig' with { 'postType': 'single' } %}
 
 {% include 'layout/acf/breadcrumb-nav.twig' %}
@@ -12,68 +14,20 @@
 			<div class="col-md-8">
 				{{post.content}}
 			</div>
-			<div class="col-md-4">
-				{% if post.eventbrite_link %}
-					<div class="l-single-event__sidebar">
-						<h3>{{post.eventbrite_title}}</h3>
-						<p>{{post.eventbrite_content}}</p>
-						<a href="{{post.eventbrite_link}}" class="b-button b-button--tertiary l-single-event__sidebar--button">Register Now</a>
-					</div>
-				{% endif %}
-
-				{% if post.pullout_link %}
-					<div class="l-single-event__sidebar">
-						<h3>{{post.pullout_title}}</h3>
-						<p>{{post.pullout_content}}</p>
-						<a href="{{post.pullout_link}}" class="b-button b-button--tertiary l-single-event__sidebar--button">Download Agenda</a>
-					</div>
-				{% endif %}
-
-				<div class="l-single-event__sidebar">
-					<h3>Share this</h3>
-
-					<ul class="l-single-event__sidebar--social">
-						<li><a href="#" class="js-fb-share"><span class="icon-facebook"></span></a></li>
-						<li><a href="http://twitter.com/home?status={{post.title}}+{{currentUrl}}"><span class="icon-twitter"></span></a></li>
-						<li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{currentUrl}}&title={{post.title}}"><span class="icon-linkedin"></span></a></li>
-						<li><a href="mailto:?subject={{post.title}}&amp;body={{currentUrl}}"><span class="icon-email"></span></a></li>
-					</ul>
-				</div>
+			<div class="col-md-4 b-popular-posts">
+				<h2>Most Read Articles</h2>
+				<ol>
+					{% for post in popularPosts %}
+						<li class="b-popular-posts__post">
+							<a href="{{post.link}}">{{post.title}}</a><span>{{function('wpb_get_post_views', post.id)}}</span>
+						</li>
+					{% endfor %}
+				</ol>
 			</div>
 		</div>
 	</div>
 </div>
 
-{% if postType == 'events' %}
-	<div class="l-page-section l-page-section--grey l-page-section--section-header">
-		<div class="b-section-header">
-			<div class="container">
-				<div class="row">
-					<h2 class="b-section-header__title  b-section-header__title--pink text-center">You may also like</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="l-page-section l-page-section--grey b-related-events">
-		<div class="container">
-			<div class="row">
-				{% for event in relatedPosts %}
-					<div class="col-sm-4 b-related-events__event">
-						{% set timestamp = function('strtotime', event.event_date) %}
-						<img src="{{event.thumbnail|resize(350, 250)}}" alt="" class="b-related-events__event--thumb">
-						<div class="js-match-height b-related-events__event--container">
-							<h3 class="b-related-events__event--title"><a href="{{event.link}}">{{event.title}}</a></h3>
-							<p class="b-related-events__event--date">{{timestamp|localizeddate('long', 'none', locale)}}, {{event.event_time}}</p>
-							<p class="b-related-events__event--excerpt">{{event.content|excerpt(20)}}</p>
-							<a href="{{event.link}}" class="b-related-events__event--link">Continue Reading</a>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-{% endif %}
 
 {% include 'footer.twig' with {'pullup': '120'} %}
 {% endblock %}

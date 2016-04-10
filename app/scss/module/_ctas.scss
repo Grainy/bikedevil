@@ -1,0 +1,15 @@
+@include b(b-cta-container){
+	clear: both;
+
+	> div {
+		padding: 0;
+
+		&:first-child {
+			padding-right: 5px;
+		}
+
+		&:last-child {
+			padding-left: 5px;
+		}
+	}
+}

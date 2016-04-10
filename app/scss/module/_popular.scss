@@ -1,0 +1,49 @@
+@include b(b-popular-posts){
+	// border: 1px solid grey;
+	// border-radius: 5px;
+
+	&.fixed {
+		position: fixed;
+		top: 105px;
+	}
+
+	h2 {
+		margin: 0;
+		margin-top: 15px;
+		font-size: 20px;
+		line-height: 20px;
+	}
+
+	ol {
+		margin-top: 15px; 
+	}
+
+	@include e(post) {
+		margin: 0 0 10px 25px;
+
+		&:before {
+			top: -7px;
+		}
+
+		a {
+			text-decoration: none;
+			color: $body-font-color;
+
+			&:hover {
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					width: 75%;
+					border-bottom: 2px solid $brandYellow;
+				}
+			}
+		}
+
+		span {
+			float: right;
+			font-size: 14px;
+			color: $body-font-color;
+		}
+	}
+}

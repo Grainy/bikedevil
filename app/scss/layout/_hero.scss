@@ -7,6 +7,10 @@
 	overflow:hidden;
 	padding-top: 90px;
 
+	@include m(single) {
+		height: 50vh;
+	}
+
 	.flex-viewport {
 		height: 100%;
 		//overflow: visible!important;
@@ -131,7 +135,6 @@
 
 
 			&.smaller {
-				font-family: $font-family;
 				@include rem((
 					font-size: 36px,
 					line-height: 36px
@@ -184,5 +187,29 @@
 			z-index:2;
 		}
 
+	}
+
+	@include m(single) {
+		.l-hero__slide {
+			.l-hero__generic-text {
+				h2 {
+					color: $brandYellow;
+				}
+				.by, .on {
+					color: $white;
+					@include rem((
+						font-size: 22px,
+						line-height: 30px
+					));
+				}
+
+				.on {
+					@include rem((
+						font-size: 18px,
+						line-height: 30px
+					));
+				}
+			}
+		}
 	}
 }

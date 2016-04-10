@@ -1,6 +1,7 @@
 footer {
+	clear: both;
 	.l-page-section {
-		padding: 50px 0;
+		padding: 25px 0;
 
 		@include max-screen($screen-xs-max) {
 			padding: 15px 0;
@@ -44,34 +45,6 @@ footer {
 		));
 	}
 
-	@include e(bikedevil) {
-		position: relative;
-		float: left;
-		width: 124px;
-		height: 34px;
-		background: url("/app/themes/bike-devil/app/img/logo/logo-footer.png") no-repeat;
-		@include image-2x("/app/themes/bike-devil/app/img/logo/logo-footer@2x.png", contain);
-		margin-right: 32px;
-
-		@include screen($screen-sm, $screen-tablet) {
-			max-width: 45%;
-			margin-right: 20px;
-			top: 3px;
-		}
-	}
-	@include e(mhance) {
-		position: relative;
-		float: left;
-		width: 98px;
-		height: 35px;
-		background: url("/app/themes/bike-devil/app/img/logo/mhance.png") no-repeat;
-		@include image-2x("/app/themes/bike-devil/app/img/logo/mhance@2x.png", contain);
-
-		@include screen($screen-sm, $screen-tablet) {
-			max-width: 45%;
-		}
-	}
-
 	@include e(nav){
 		@extend %inline-list;
 
@@ -110,7 +83,7 @@ footer {
 	@include e(social){
 		@extend %inline-list;
 		position: relative;
-		top: 3px;
+		margin-bottom:10px;
 
 		@include max-screen($screen-xs-max) {
 			margin-top: 0;
@@ -129,6 +102,7 @@ footer {
 		li, a {
 			text-decoration: none;
 			color: $brandYellow;
+			font-size: 35px;
 		}
 
 		li {

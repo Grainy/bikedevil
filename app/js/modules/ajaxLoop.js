@@ -10,6 +10,7 @@ var ajaxLoop = (function($) {
 		var page = 1; 			// Current page
 		var loading = false;	// Is a request being made?
 		var filter = null; 		// Filter posts by (default : null)
+		var category = 'Latest Posts';
 		var maxPages; 			// Amount of pages in archive
 		var url; 				// URL to pass to ajax request
 		var date; 				// Date of creation
@@ -19,7 +20,7 @@ var ajaxLoop = (function($) {
 			posts_per_page = 4;
 		}
 
-		var load_posts = function(filter){
+		var load_posts = function(filter, category){
 			if (loading === false) {
 				loading = true;
 
@@ -68,9 +69,11 @@ var ajaxLoop = (function($) {
 							console.log('Post: ' + initialLoad);
 
 							if (i === 0 && initialLoad) {
-								console.log($('.l-archive__row').length);
+								$('.l-archive__row').before('<h2 class="col-md-6 l-archive__title"><a href="#">'+ category +'</a></h2>'
+								);
+
 								$('.l-archive__row').prepend(
-										'<h2 class="col-md-6 l-archive__title"><a href="#">Latest News</a></h2>'+
+										
 										'<div class="col-sm-12 l-archive__post l-archive__post--featured l-archive__post--'+i+'">'+
 											'<a href="'+ data[i].link +'" class="l-archive__post--thumb-container">'+
 												'<img src="'+ data[i].thumb_url +'" alt="" class="l-archive__post--thumb">'+
@@ -132,40 +135,50 @@ var ajaxLoop = (function($) {
 		$('[data-cat]').on('click', function(event) {
 			event.preventDefault();
 			var thisCat = $(this).data('cat');
+			var thisText = $(this).text();
 			var filter;
+			var category;
 
 			// If all, show all posts
 			if (thisCat === 'all') {
 				filter = null;
+				category = 'Latest News';
 			} else {
 				filter = thisCat;
+				category = thisText;
 			}
 
+			$('.l-archive__title').remove();
 			$('.l-archive__row').empty();
 
 			//Reset pagination
 			page = 1;
 			initialLoad = true;
-			load_posts(filter);
+			load_posts(filter, category);
 		});
 
 		$('.js-archive-filter').on('change.fs', function () {
 		    var thisCat = this.value;
+		    var thisText = this.text();
 		    var filter;
+		    var caetgory;
 
 		    // If all, show all posts
 		    if (thisCat === 'all') {
 		    	filter = null;
+		    	category = 'Latest News';
 		    } else {
 		    	filter = thisCat;
+		    	category = thisText;
 		    }
 
+		    $('.l-archive__title').remove();
 		    $('.l-archive__row').empty();
 
 		    //Reset pagination
 		    page = 1;
 		    initialLoad = true;
-		    load_posts(filter);
+		    load_posts(filter, category);
 		});
 
 		if (is_archive && is_news === true) {
@@ -185,7 +198,7 @@ var ajaxLoop = (function($) {
 		});
 
 
-		load_posts(filter);
+		load_posts(filter, category);
 	};
 
 	return {

@@ -30,6 +30,10 @@ var boilerAPP = (function($) {
 		_headroom();
 		_ctas();
 		_slider();
+
+		$(window).resize(function() {
+			_ctas();
+		});
 	};
 
 	var _bindEvents = function() {
@@ -40,6 +44,8 @@ var boilerAPP = (function($) {
 			parent.history.back();
 			return false;
 		});
+
+		$('select').fancySelect();
 	};
 
 	var _headroom = function() {
@@ -74,6 +80,42 @@ var boilerAPP = (function($) {
 			arrows: true,
 			prevArrow: '<a class="slider-prev"></a>',
 			nextArrow: '<a class="slider-next"></a>',
+
+			responsive: [{
+				breakpoint: 1200,
+					settings: {
+						slidesToShow: 6,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 960,
+					settings: {
+						slidesToShow: 3,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 800,
+					settings: {
+						slidesToShow: 2,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+				}, {
+
+				breakpoint: 500,
+					settings: {
+						slidesToShow: 1,
+						arrows: false,
+						dots: true,
+						centerPadding: '0px'
+					}
+
+			}]
 		});
 		$('.l-gallery-strip').slickLightbox();
 	};

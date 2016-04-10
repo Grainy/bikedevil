@@ -36,7 +36,11 @@
 }
 
 .slick-slider{
-	@include min-screen($screen-sm) {
-    	margin-bottom:0;
+    margin-bottom:0;
+
+    .slick-slide {
+    	img {
+    		width: 100%;
+    	}
     }
 }

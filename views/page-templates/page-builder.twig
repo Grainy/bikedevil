@@ -68,6 +68,10 @@
 
 			{% include 'layout/acf/news-blocks.twig' %}
 
+		{% elseif media_item.acf_fc_layout == 'contact_form' %}
+
+			{% include 'layout/acf/contact-form.twig' %}
+
 		{% endif %}
 
 		{% if media_item.acf_fc_layout == 'hero' %}

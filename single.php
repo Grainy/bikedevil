@@ -31,6 +31,14 @@ $relatedArgs = array(
 	'post__not_in' => array($post->ID)
 );
 
+$popularArgs = array(
+	'posts_per_page' => 5, 
+	'meta_key' => 'wpb_post_views_count', 
+	'orderby' => 'meta_value_num', 
+	'order' => 'DESC'
+);
+
+$context['popularPosts'] = Timber::get_posts($popularArgs);
 $context['relatedPosts'] = Timber::get_posts($relatedArgs);
 
 $context['postType'] = get_post_type();

@@ -9,11 +9,7 @@
 
 {% set hasSlides = true %}
 
-{% if postType == 'events' %}
-	{% set slider = options.events_slider %}
-{% elseif postType == 'careers' %}
-    {% set slider = options.careers_slider %}
-{% elseif postType == 'single' %}
+{% if postType == 'single' %}
     {% set hasSlides = false %}
 {% else %}
     {% set slider = media_item.slider %}
@@ -29,7 +25,7 @@
 							<div class="container">
 								<div class="row">
 									<div class="l-hero__generic-text">
-										<div class="col-md-5 col-xs-6 col-xs-offset-3 col-sm-offset-0">
+										<div class="col-md-5 col-xs-8 col-xs-offset-2 col-sm-offset-0">
 											<h2 {% if smaller %}class="smaller"{% endif %}>{{slide.title}}</h2>
 											{% if slide.sub_title %}
 												<h3>{{slide.sub_title}}</h3>
@@ -54,24 +50,29 @@
 	</div>
 
 {% else %}
-	{% if post.get_field('event_banner_image') %}
-		{% set bg = post.get_field('event_banner_image') %}
-	{% else %}
-		{% set bg = site.theme.link~'/app/img/tmp/home-hero@2x.jpg' %}
-	{% endif %}
+	{% set bg = site.theme.link~'/app/img/tmp/hero.jpg' %}
+	
     <div class="l-page-section l-page-section--flush">
-    	<div class="l-hero">
-    		<div class="flexslider h-100">
-    			<ul class="slides h-100">
+		<div class="l-hero l-hero--single">
+			<div class="flexslider h-100">
+				<ul class="slides h-100">
 					<li class="l-hero__slide" style="background-image:url('{{bg}}')">
-						<div class="l-hero__generic-text">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<h2 class="smaller">{{post.title}}</h2>
+						<div class="container">
+							<div class="row">
+								<div class="l-hero__generic-text">
+									<div class="col-lg-8">
+										<h2 class="smaller">{{post.title}}</h2>
+										<div class="author-info">
+											<p class="by">By {{function('the_author_nickname')}}</p>
+											<p class="on">On {{post.post_date|date("d M Y")}}</p>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
-    			</ul>
-    		</div>
-    	</div>
+				</ul>
+			</div>
+		</div>
     </div>
 {% endif %}

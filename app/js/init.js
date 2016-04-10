@@ -3,10 +3,13 @@ jQuery(document).ready(function($) {
 	boilerAPP.init();
 	slider.init();
 	mobileNav.init();
+	ajaxLoop.init();
 
 	if ($('.b-secondary-nav__nav').length > 0) {
 		secondaryNav.init();
 	}
 
-	ajaxLoop.init();
+	if ($('.b-popular-posts').length > 0 && $(window).width() >= 991) {
+		stickyWidget.init();
+	}
 });

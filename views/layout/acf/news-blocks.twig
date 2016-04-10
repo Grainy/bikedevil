@@ -5,9 +5,9 @@
 				<div class="loading">
 					<img src="{{site.theme.link}}/app/img/ui/ajax-loader.gif" alt="">
 				</div>
-				<div class="cta-container">
+				<div class="b-cta-container">
 					{% for cta in media_item.call_to_action %}
-					    <div class="col-md-6">
+					    <div class="col-sm-6">
 					    	<div class="b-call-to-action" style="background-image: url({{cta.image}});">
 					    		<a href="{{cta.link}}" class="b-call-to-action__text"><span>{{cta.title}}</span></a>
 					    	</div>
@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-md-4">
 				{% for tweet in tweets %}
-				   <div class="b-tweet col-md-12">
+				   <div class="b-tweet col-md-12 col-sm-4 js-match-height">
 				   		<span class="b-tweet__content">{{tweet.description}}</span>
 
 				   		<div class="b-tweet__link">
@@ -28,11 +28,5 @@
 				{% endfor %}
 			</div>
 		</div>
-
-		{% if function('wpmd_is_device') or (function('wpmd_is_ios') and function('wpmd_is_chrome_browser')) %}
-			<div class="text-center">
-				<a href="#" class="b-button b-button--tertiary js-load-more">Load More</a>
-			</div>
-		{% endif %}
 	</div>
 </div>
