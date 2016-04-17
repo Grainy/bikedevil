@@ -105,6 +105,7 @@ gulp.task('scripts-core', function() {
 		dirs.src + '/js/vendor/jquery.flexslider-min.js',
 		dirs.src + '/js/vendor/headroom.min.js',
 		dirs.src + '/js/vendor/slick.min.js',
+		dirs.src + '/js/vendor/jquery.magnific-popup.js',
 	   ]).pipe(plugins.concat('core.js')).pipe(gulp.dest(dirs.build + '/js/'));
 
 });

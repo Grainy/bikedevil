@@ -18,14 +18,23 @@
 	{% endif %}
 
 	<div class="row">
-		<div class="col-md-4">
-			{{media_item.content}}
-		</div>
-
-		<div class="l-contact-form col-md-8 {{placement}}">
-			{% filter shortcodes %}
-				{{media_item.form}}
-			{% endfilter  %}
-		</div>	
+		{% if media_item.content %}
+			<div class="col-md-12">
+				<div class="l-contact-form " style="float: {{media_item.form_placement}}; width: 50%;">
+					{% filter shortcodes %}
+						{{media_item.form}}
+					{% endfilter  %}
+				</div>
+				<div style="margin-top: 40px;">
+					{{media_item.content}}
+				</div>
+			</div>
+		{% else %}
+			<div class="l-contact-form col-md-8 col-md-offset-2">
+				{% filter shortcodes %}
+					{{media_item.form}}
+				{% endfilter  %}
+			</div>	
+		{% endif %}
 	</div>
 </div>

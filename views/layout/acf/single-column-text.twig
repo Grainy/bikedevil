@@ -1,12 +1,8 @@
-<div class="l-page-section">
-	<div class="b-two-column-text">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-10 col-sm-offset-1 text-center">
-					<h2 class="b-section-header__title">{{media_item.header_title}}</h2>
-					{{media_item.content}}
-				</div>
-			</div>
-		</div>
+<div class="text-center">
+	{% if media_item.header_title %}
+		<h2 class="b-section-header__title bg--grey">{{media_item.header_title}}</h2>
+	{% endif %}
+	<div class="col-md-6 col-md-offset-3">
+		{{media_item.content}}
 	</div>
 </div>

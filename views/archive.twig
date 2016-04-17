@@ -4,9 +4,20 @@
 
 	<div class="l-page-section l-archive">
 		<div class="container">
-			{% include 'layout/acf/secondary-nav.twig' with {
-				'archive' : true
-			} %}
+			<div class="text-center" style="margin-top: 15px;">
+				<select name="secondary-nav" id="secondary-nav" class="fancy-select js-archive-filter">
+					<option value="all">All</option>
+
+					{% for category in categories  %}
+						{% if category.slug == 'uncategorized' %}
+						{% else %}
+							<option value="{{category.slug}}">{{category.title}}</option>
+						}
+						{% endif %}
+					{% endfor %}
+				</select>
+			</div>
+
 			<div class="row l-archive__row">
 
 			</div>

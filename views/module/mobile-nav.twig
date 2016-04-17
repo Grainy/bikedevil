@@ -14,13 +14,29 @@
 		{% endfor %}
 	</ul>
 
-	{# <ul class="l-masthead__nav--mobile-footer-items">
-		{% for item in footerNav.get_items %}
-			<li class="{{item.classes | join(' ')}}">
-				<a class="" href="{{item.get_link}}">
-					{{item.title}}
-				</a>
-			</li>
-		{% endfor %}
-	</ul> #}
+	<ul class="l-masthead__nav--social">
+		{% if options.twitter %}
+			<li><a href="{{options.twitter}}"><span class="icon-twitter"></span></a></li>
+		{% endif %}
+		
+		{% if options.facebook %}
+			<li><a href="{{options.facebook}}"><span class="icon-facebook"></span></a></li>
+		{% endif %}
+
+		{% if options.google_plus %}
+			<li><a href="{{options.google_plus}}"><span class="icon-googleplus"></span></a></li>
+		{% endif %}
+
+		{% if options.youtube %}
+			<li><a href="{{options.youtube}}"><span class="icon-youtube"></span></a></li>
+		{% endif %}
+
+		{% if options.rss_feed %}
+			<li><a href="{{options.rss_feed}}"><span class="icon-rss"></span></a></li>
+		{% endif %}
+
+		{% if options.linkedin %}
+			<li><a href="{{options.linkedin}}"><span class="icon-linkedin"></span></a></li>
+		{% endif %}
+	</ul>
 </div>

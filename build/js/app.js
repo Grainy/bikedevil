@@ -16,13 +16,15 @@ var ajaxLoop = (function($) {
 		var date; 				// Date of creation
 		var initialLoad = true;
 
-		if (page == 1) {
-			posts_per_page = 4;
-		}
-
 		var load_posts = function(filter, category){
 			if (loading === false) {
 				loading = true;
+
+				if (page === 1) {
+					posts_per_page = 4;
+				} else {
+					posts_per_page = 3;	
+				}
 
 				if (filter) {
 					url = '/wp-json/posts?type=post&filter[category_name]='+ filter +'&filter[posts_per_page]='+posts_per_page+'&page='+page;
@@ -38,26 +40,21 @@ var ajaxLoop = (function($) {
 					beforeSend: function() {
 						// Show loading gif
 						$('.loading').show();
-						$('.js-load-more').hide();
 					},
 
 					success: function ( data, textStatus, request ) {
 						// Get amount of posts and divide by how many posts per page
-
-						var divideBy = posts_per_page - 1;
-
 						if (initialLoad) {
-							divideBy = posts_per_page - 1;	
+							maxPages = request.getResponseHeader('X-WP-Total') / (posts_per_page-1);
 						} else {
-							divideBy = posts_per_page;
+							maxPages = request.getResponseHeader('X-WP-Total') / posts_per_page;
 						}
 
-
-						maxPages = request.getResponseHeader('X-WP-Total') / divideBy;
 
 						// Hide loading gif
 						$('.loading').hide();
 
+						// Get amount of posts and divide by how many posts per page
 						for (var i = 0; i < data.length; i++) {
 							// Get first 20 words of content
 							var excerpt = data[i].content.replace(/<\/?[^>]+>/gi, '');
@@ -66,60 +63,58 @@ var ajaxLoop = (function($) {
 							// Format date
 							date = moment(data[i].date).fromNow();
 
-							console.log('Post: ' + initialLoad);
+							var postThumb;
+							var match = data[i].content.match(/<img[^>]+>/);
 
-							if (i === 0 && initialLoad) {
-								$('.l-archive__row').before('<h2 class="col-md-6 l-archive__title"><a href="#">'+ category +'</a></h2>'
-								);
-
-								$('.l-archive__row').prepend(
-										
-										'<div class="col-sm-12 l-archive__post l-archive__post--featured l-archive__post--'+i+'">'+
-											'<a href="'+ data[i].link +'" class="l-archive__post--thumb-container">'+
-												'<img src="'+ data[i].thumb_url +'" alt="" class="l-archive__post--thumb">'+
-											'</a>'+
-											'<div class="l-archive__post--container">'+
-												'<h3 class="l-archive__post--title"><a href="'+ data[i].link +'">'+ data[i].title +'</a></h3>'+
-												'<p class="l-archive__post--meta">from '+ data[i].author.name + " | " + date +'</p>'+
-												'<p class="l-archive__post--excerpt">'+ excerpt +'</p>'+
-												'<a href="'+ data[i].link +'" class="b-button">Read More</a>'+
-											'</div>'+
-										'</div>'
-								);
+							if (data[i].thumb_url !== 'http://staging.bikedevil.net/wp/wp-includes/images/media/default.png') {
+								postThumb = data[i].thumb_url;
+							} else if (match !== null) {
+							    var matchedText = match[0];
+							    postThumb = $(match[0]).attr('src');
 							} else {
-								if ($('.l-archive__post--featured').length < 1) {
-									$('.l-archive__row').prepend('<div class="l-archive__post--featured"></div>');
-								}
-
-								$('.l-archive__post--featured').after(
-										'<div class="col-sm-4 l-archive__post l-archive__post--'+i+'">'+
-											'<a href="'+ data[i].link +'">'+
-												'<img src="'+ data[i].thumb_url +'" alt="" class="l-archive__post--thumb">'+
-											'</a>'+
-											'<div class="l-archive__post--container js-match-height">'+
-												'<h3 class="l-archive__post--title"><a href="'+ data[i].link +'">'+ data[i].title +'</a></h3>'+
-												'<p class="l-archive__post--meta">from '+ data[i].author.name +
-												'<p class="l-archive__post--date">'+ date +
-											'</div>'+
-										'</div>'
-								);
+								postThumb = data[i].thumb_url;
 							}
 
+							if (i === 0 && initialLoad) {
+								$('.l-archive__row').before('<h2 class="col-md-6 l-archive__title"><a href="/news">'+ category +'</a></h2>'
+								);
 
+								$('.l-archive__row').prepend(										
+									'<div class="col-sm-12 l-archive__post l-archive__post--featured l-archive__post--'+i+'">'+
+										'<a href="'+ data[i].link +'" class="l-archive__post--thumb-container" style="background-image: url('+postThumb+')">'+
+										'</a>'+
+										'<div class="l-archive__post--container">'+
+											'<h3 class="l-archive__post--title"><a href="'+ data[i].link +'">'+ data[i].title +'</a></h3>'+
+											'<p class="l-archive__post--meta">from '+ data[i].author.name + " | " + date +'</p>'+
+											'<p class="l-archive__post--excerpt">'+ excerpt +'</p>'+
+											'<a href="'+ data[i].link +'" class="b-button">Read More</a>'+
+										'</div>'+
+									'</div>'
+								);
+							} else {
+								$('.l-archive__row').append(
+									'<div class="col-sm-4 l-archive__post l-archive__post--'+i+' js-match-height">'+
+										'<a href="'+ data[i].link +'" class="l-archive__post--thumb-container" style="background-image: url('+postThumb+')">'+
+										'</a>'+
+										'<div class="l-archive__post--container">'+
+											'<h3 class="l-archive__post--title"><a href="'+ data[i].link +'">'+ data[i].title +'</a></h3>'+
+											'<p class="l-archive__post--meta">from '+ data[i].author.name +
+											'<p class="l-archive__post--date">'+ date +
+											'<p class="l-archive__post--excerpt">'+ excerpt +'</p>'+
+										'</div>'+
+									'</div>'
+								);
+							}
 
 							$('.l-archive__post--'+i).fadeIn(500);
 						}
 
 						$('.js-match-height').matchHeight();
+						var windowHeight = $(window).height();
+						windowHeight = windowHeight - 100;
 
-						if(page === maxPages) {
-							$('.js-load-more').hide();
-						} else {
-							$('.js-load-more').show();
-						}
-
-						page++;          // Increment page
 						initialLoad = false;
+						page++;          // Increment page
 						loading = false; // Request finished
 					},
 
@@ -132,36 +127,13 @@ var ajaxLoop = (function($) {
 			}
 		};
 
-		$('[data-cat]').on('click', function(event) {
-			event.preventDefault();
-			var thisCat = $(this).data('cat');
-			var thisText = $(this).text();
-			var filter;
-			var category;
-
-			// If all, show all posts
-			if (thisCat === 'all') {
-				filter = null;
-				category = 'Latest News';
-			} else {
-				filter = thisCat;
-				category = thisText;
-			}
-
-			$('.l-archive__title').remove();
-			$('.l-archive__row').empty();
-
-			//Reset pagination
-			page = 1;
-			initialLoad = true;
-			load_posts(filter, category);
-		});
-
 		$('.js-archive-filter').on('change.fs', function () {
 		    var thisCat = this.value;
-		    var thisText = this.text();
+		    var thisText = $('.trigger').text();
 		    var filter;
-		    var caetgory;
+		    var category;
+
+		    console.log(this.value);
 
 		    // If all, show all posts
 		    if (thisCat === 'all') {
@@ -326,6 +298,43 @@ var ajaxLoop = (function($) {
 }(jQuery));
 
 jQuery('input[type=file]').customFile();
+
+var gallery = (function($) {
+ 	var switched = false;
+
+ 	var init = function() {
+ 		_lightbox();
+ 	};
+
+ 	var _lightbox = function() {
+ 		$('.lightbox').magnificPopup({
+ 		  delegate: 'a',
+ 		  type: 'image',
+
+ 		  gallery: {
+ 		    enabled: true
+ 		  },
+ 		});
+
+ 		$('.popup-modal').magnificPopup({
+ 			type: 'inline',
+ 			preloader: false,
+ 			focus: '#username',
+ 			modal: true
+ 		});
+ 		$(document).on('click', '.popup-modal-dismiss', function (e) {
+ 			e.preventDefault();
+ 			$.magnificPopup.close();
+ 		});
+ 	};
+
+	return {
+		init: init
+	};
+
+})(jQuery);
+
+gallery.init();
 
 var mobileNav = (function($) {
 	var self = this;

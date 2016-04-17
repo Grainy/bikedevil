@@ -6,6 +6,14 @@
 	background-repeat:no-repeat;
 	overflow:hidden;
 	padding-top: 90px;
+	
+	@include max-screen($screen-xs-max) {
+		.b-button {
+			&:first-child {
+				margin-top: 15px;
+			}
+		}
+	}
 
 	@include m(single) {
 		height: 50vh;

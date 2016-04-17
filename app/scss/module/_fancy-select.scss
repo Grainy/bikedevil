@@ -1,12 +1,6 @@
 .fancy-select {
-	float: left;
-	margin-right: 7px;
-
-	@include max-screen($screen-sm) {
-		float: none;
-		margin-right: 0;
-		display: inline-block;
-	}
+	margin-right: 0;
+	display: inline-block;
 
 	@include max-screen($screen-xs-max) {
 		width: 100%;
@@ -36,15 +30,16 @@
 		cursor: pointer;
 		padding: 10px 40px 10px 20px;
 		line-height: 25px;
+		min-width: 300px;
 
 		@include max-screen($screen-xs-max) {
 			border-radius: 50px;
 		}
 
-
-		@include screen($screen-sm, $screen-tablet) {
-			min-width: 300px;
-		}
+		@include rem((
+			font-size: 14px,
+			line-height: 20px
+		));
 
 		&:after {
 			border: 5px solid transparent;
@@ -61,7 +56,7 @@
 
 	.options {
 		min-width: 283px;
-		background: #c59a02;
+		background: $brandYellow;
 		text-align: left;
 		box-shadow: none;
 		border-radius: 0;
@@ -95,7 +90,7 @@
 			}
 
 			@include rem((
-				font-size: 12px,
+				font-size: 14px,
 				line-height: 20px
 			));
 		}

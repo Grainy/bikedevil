@@ -22,11 +22,8 @@ body {
 	-webkit-font-smoothing: $font-smoothing;
 	-moz-osx-font-smoothing: grayscale;
 	margin:0;
-
-	@include rem((
-		font-size: 18px,
-		line-height: 28px
-	));
+	font-size: 18px;
+	line-height: 28px;
 
 	@include min-screen($screen-sm) {
 		-webkit-text-size-adjust: none;
@@ -47,6 +44,7 @@ body {
 html, body {
 	height: 100%;
 	background-color: #fafafa;
+	background-image: url("/app/themes/bike-devil/app/img/bg/bd-texture.png");
 }
 
 a {

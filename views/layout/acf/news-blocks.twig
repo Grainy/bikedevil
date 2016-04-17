@@ -1,10 +1,13 @@
 <div class="l-archive">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 l-archive__row js-match-height">
-				<div class="loading">
-					<img src="{{site.theme.link}}/app/img/ui/ajax-loader.gif" alt="">
+			<div class="col-md-8">
+				<div class="l-archive__row">
+					<div class="loading">
+						<img src="{{site.theme.link}}/app/img/ui/ajax-loader.gif" alt="">
+					</div>
 				</div>
+
 				<div class="b-cta-container">
 					{% for cta in media_item.call_to_action %}
 					    <div class="col-sm-6">

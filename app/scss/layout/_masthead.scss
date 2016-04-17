@@ -1,5 +1,5 @@
 .burger-icon {
-	@include burger(26px, 4px, 5px, #9B9B9B, 0, .5s);
+	@include burger(26px, 4px, 5px, $brandGrey, 0, .5s);
 	position: absolute;
 	top: 36px;
 	right: 20px;
@@ -25,7 +25,7 @@
 
 	@include e(logo) {
 		float: left;
-		width: 350px;
+		width: 312px;
 		height: 69px;
 		background: url("/app/themes/bike-devil/app/img/logo/logo.png") no-repeat;
 		@include image-2x("/app/themes/bike-devil/app/img/logo/logo@2x.png", contain);
@@ -46,7 +46,7 @@
 		@include m(item) {
 			position: relative;
 			display: inline-block;
-			margin-right: 33px;
+			margin-right: 20px;
 
 			@include max-screen($screen-sm) {
 				margin-right: 10px;
@@ -173,6 +173,30 @@
 					line-height: 34px;
 					font-family: $font-family;
 					color: $body-font-color;
+					text-decoration: none;
+				}
+			}
+		}
+
+		@include m(menu) {
+			float: left;
+			border-right: 2px solid $brandGrey;
+			padding-right: 23px;
+		}
+
+		@include m(social) {
+			float: left;
+			margin-top: 15px;
+			margin-left: 20px;
+
+
+			li {
+				display: inline-block;
+				margin-left: 10px;
+
+				a {
+					color: $body-font-color;
+					font-size: 28px;
 					text-decoration: none;
 				}
 			}

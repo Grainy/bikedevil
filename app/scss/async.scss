@@ -13,6 +13,7 @@
 @import "theme/icons";
 @import "vendor/fancySelect";
 @import "vendor/slick";
+@import "vendor/mp/main";
 
 // BASE
 @import "layout/page-section";
@@ -37,6 +38,7 @@
 @import "module/tweet";
 @import "module/ctas";
 @import "module/popular";
+@import "module/gallery";
 
 // SHAMEFUL CSS
 @import "theme/shame";

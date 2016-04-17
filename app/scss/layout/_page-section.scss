@@ -1,6 +1,13 @@
+.bg--grey {
+	background: $brandGrey;
+	border-bottom: 10px solid $brandYellow;
+	color: $brandYellow;
+	margin-bottom: 20px !important;
+}
+
 @include b(l-page-section){
 	padding: 15px 0;
-	background-color: inherit;
+	// background-color: inherit;
 	position: relative;
 
 	@include m(flush){

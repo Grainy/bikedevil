@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-center">{{post.title}}</h2>
+			</div>
+		</div>
+	</div>
+	{% if post.get_field('gallery_images') %}
+		<div class="container lightbox">
+			<div class="row">
+			{% for image in post.get_field('gallery_images') %}
+			    <div class="col-md-3">
+			    	<a href="{{image.image.url}}"><img src="{{image.image.url|resize(400, 300)}}" alt=""></a>
+			    </div>
+
+			    {% if loop.index % 4 == 0 %}
+				</div>
+				<div class="row">
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}
